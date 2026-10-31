@@ -1,39 +1,39 @@
-# Lancer zero dans un conteneur (isolation du dépôt)
+# Throw zero in a container (repository isolation)
 
-**État : écrit et vérifié seulement avec un faux `docker`** (la commande construite est testée, `sh -n` OK). L'image n'a **jamais été
-construite** et aucun conteneur n'a été lancé : pas de Docker ni de podman là où ce travail a été fait. À valider chez vous (§ Validation).
+**State: Written and verified only with fake `docker`** (built command is tested, `sh -n` OK). The image was **never
+built** and no container has been launched: no Docker or podman where this work was done. To be validated at home (§ Validation).
 
-## Pourquoi pas un « backend conteneur » dans `--sandbox`
+## Why not a “container backend” in `--sandbox`
 
-`--sandbox` enveloppe chaque commande (installation, lancement) pour l'exécuter sur l'hôte avec des droits réduits. Or zero télécharge
-pour **la plateforme de l'hôte** les runtimes (Node, uv, Go…) dans `~/.zero` et inscrit leurs chemins dans les commandes. Sous macOS ces
-binaires ne tournent pas dans un conteneur Linux ; sous Linux, cela ne marcherait qu'avec une image à la glibc compatible. Faire croire que
-cela marche aurait demandé de réécrire la résolution des runtimes sans pouvoir la tester. À la place : **zero tourne lui-même dans le
-conteneur** — il y installe ses runtimes Linux et lance le dépôt, sans rien savoir de la frontière.
+`--sandbox` wraps each command (installation, launch) to execute it on the host with reduced rights. Or zero downloads
+for **the host platform** the runtimes (Node, uv, Go…) in `~/.zero` and write their paths in the commands. Under macOS these
+binaries do not run in a Linux container; under Linux, this would only work with a compatible glibc image. Make believe that
+this works would have required rewriting the runtime resolution without being able to test it. Instead: **zero rotates itself in the
+container** — he installs his Linux runtimes there and launches the repository, without knowing anything about the border.
 
-## Utilisation
+## Usage
 
-    docker build -f contrib/Dockerfile -t zerodev:latest .          # une fois (podman : même commande)
-    contrib/zero-container.sh ~/code/projet-douteux                  # = zero ~/code/projet-douteux, mais dans un conteneur
-    ZERO_PORTS="3000 8000" contrib/zero-container.sh ~/code/projet --services local
+    docker build -f contrib/Dockerfile -t zerodev:latest .          # once (podman: same command)
+    contrib/zero-container.sh ~/code/projet-douteux # = zero ~/code/projet-douteux, but in a container
+    ZERO_PORTS="3000 8000" contrib/zero-container.sh ~/code/project --services local
 
-Le script passe au conteneur : `--cap-drop ALL`, `no-new-privileges`, limite de processus (`ZERO_PIDS`, 1024) et de mémoire (`ZERO_MEMORY`, 4g),
-le dépôt monté en `/work` (**lecture/écriture** : `node_modules` et fichiers générés y atterrissent), un volume `zerodev-home` pour `~/.zero`
-(runtimes et caches réutilisés d'un lancement à l'autre). Le reste de votre machine — `~`, clés SSH, autres dépôts — n'est pas visible.
+The script passes to the container: `--cap-drop ALL`, `no-new-privileges`, process limit (`ZERO_PIDS`, 1024) and memory limit (`ZERO_MEMORY`, 4g),
+the repository mounted in `/work` (**read/write**: `node_modules` and generated files land there), a volume `zerodev-home` for `~/.zero`
+(runtimes and caches reused from one launch to another). The rest of your machine — `~`, SSH keys, other repositories — is not visible.
 
-## Limites (à connaître)
+## Limits (to know)
 
-- **Réseau non coupé** : l'installation a besoin du réseau ; le projet peut donc émettre des connexions sortantes.
-- **Ports** : publiez-les avec `ZERO_PORTS`, et l'application doit écouter sur `0.0.0.0`, pas `127.0.0.1` (sinon elle est injoignable de l'hôte).
-- **Services** (Postgres, Redis…) : pas de Docker dans le conteneur, donc `--services local` obligatoire et les binaires correspondants doivent être
-  présents dans l'image (ils ne le sont pas : ajoutez-les à `contrib/Dockerfile` au besoin, ou lancez les services sur l'hôte).
-- **GPU** : non transmis. **SELinux** (Fedora, podman) : `ZERO_VOLUME_OPTS=":Z"`.
-- Le dépôt monté en écriture reste modifiable par le projet : c'est le seul endroit où il peut écrire durablement.
-- Un conteneur n'est pas une garantie absolue (noyau partagé) ; en plus de `--cap-drop ALL`, préférez podman sans droits (rootless).
+- **Network not cut**: the installation requires the network; the project can therefore issue outgoing connections.
+- **Ports**: Publish them with `ZERO_PORTS`, and the application should listen on `0.0.0.0`, not `127.0.0.1` (otherwise it is unreachable from the host).
+- **Services** (Postgres, Redis, etc.): no Docker in the container, so `--services local` mandatory and the corresponding binaries must be
+  present in the image (they are not: add them to `contrib/Dockerfile` if necessary, or start the services on the host).
+- **GPU**: not transmitted. **SELinux** (Fedora, podman): `ZERO_VOLUME_OPTS=":Z"`.
+- The repository mounted for writing remains modifiable by the project: this is the only place where it can write permanently.
+- A container is not an absolute guarantee (shared core); in addition to `--cap-drop ALL`, prefer podman without rights (rootless).
 
-## Validation (à faire, avec un dépôt de confiance d'abord)
+## Validation (to be done, with a trust deposit first)
 
-1. `docker build -f contrib/Dockerfile -t zerodev:latest .` réussit ; `docker run --rm zerodev:latest --version` affiche la version.
-2. `contrib/zero-container.sh examples/node-app` : l'exemple s'installe et répond (avec `ZERO_PORTS=<port>`).
-3. Isolation : `contrib/zero-container.sh <dépôt> --cmd "ls ~/.ssh"` ne doit rien montrer de votre dossier personnel.
-4. Collez ici la première erreur rencontrée : le plus probable est un paquet système manquant dans l'image.
+1. `docker build -f contrib/Dockerfile -t zerodev:latest .` succeeds; `docker run --rm zerodev:latest --version` displays the version.
+2. `contrib/zero-container.sh examples/node-app`: The example installs and responds (with `ZERO_PORTS=<port>`).
+3. Isolation: `contrib/zero-container.sh <dépôt> --cmd "ls ~/.ssh"` should not show anything from your personal file.
+4. Paste the first error encountered here: the most likely is a missing system package in the image.

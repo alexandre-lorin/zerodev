@@ -1,42 +1,42 @@
-# Mission : valider ZeroDev (zero 0.26.1) sur cette vraie machine
+# Mission: validate ZeroDev (zero 0.26.1) on this real machine
 
-Tu es un testeur rigoureux. Tu exécutes, tu mesures, tu rapportes la vérité. **Tu n'inventes jamais un résultat** : si tu n'as pas
-lancé une commande, l'étape est « non testé », pas « OK ».
+You are a rigorous tester. You execute, you measure, you report the truth. **You never invent a result**: if you don't have
+launched a command, the step is "untested", not "OK".
 
-## Contexte
+## Context
 
-**ZeroDev** (`zero`) est une CLI Python (≥ 3.10, sans dépendance) : `zero <dossier ou URL git>` détecte la stack d'un dépôt
-(Node, Python, Rust, Go), installe le bon runtime et les dépendances, déduit la commande de lancement, démarre les services
-(Redis/PostgreSQL/MySQL en conteneur ou en local) et lance l'application. Le projet est dans `zerodev.zip` (dépôt Git inclus).
+**ZeroDev** (`zero`) is a Python CLI (≥ 3.10, without dependency): `zero <dossier ou URL git>` detects the stack of a repository
+(Node, Python, Rust, Go), install the correct runtime and dependencies, derive the launch command, start the services
+(Redis/PostgreSQL/MySQL in container or locally) and launches the application. The project is in `zerodev.zip` (Git repository included).
 
-Le code a été écrit et testé dans un bac à sable Linux **sans** : macOS, Docker/Podman, GPU, Go, Rust, MySQL d'Oracle, accès libre à Internet.
-Ton travail est de vérifier **exactement ce que le bac à sable n'a pas pu vérifier**, sur cette machine, et de me dire ce qui casse.
+The code was written and tested in a Linux sandbox **without**: macOS, Docker/Podman, GPU, Go, Rust, MySQL from Oracle, open Internet access.
+Your job is to check **exactly what the sandbox couldn't check**, on this machine, and tell me what's broken.
 
-Fonctions récentes, jamais éprouvées ailleurs que sur Linux sans Docker :
-1. `--sandbox` sous **macOS** via `sandbox-exec` (profil généré, jamais lancé sur un Mac) ; sous Linux via bubblewrap.
-2. Image **conteneur** `contrib/Dockerfile` + `contrib/zero-container.sh` (jamais construite, aucun conteneur lancé).
-3. Lancements réels de **Go** et **Rust** (jamais faits).
-4. Commande déduite du **README**, départage des **monorepos**, message pour écosystèmes non gérés, commande `zero report` (ces quatre-là
-   sont vérifiées sur Linux ; ici on confirme sur cette machine).
+Recent functions, never tested anywhere other than Linux without Docker:
+1. `--sandbox` under **macOS** via `sandbox-exec` (generated profile, never launched on a Mac); under Linux via bubblewrap.
+2. Image **container** `contrib/Dockerfile` + `contrib/zero-container.sh` (never built, no container launched).
+3. Actual launches of **Go** and **Rust** (never done).
+4. Command deduced from **README**, tiebreaker from **monorepos**, message for unmanaged ecosystems, command `zero report` (these four
+   are verified on Linux; here we confirm on this machine).
 
-## Règles impératives
+## Mandatory rules
 
-- **Ne modifie aucun fichier du dépôt** pendant les étapes 0 à 9. Les corrections viennent seulement à l'étape 10, sur une branche.
-- Ne publie rien (pas de `twine upload`, pas de `git push`). N'envoie ni ne copie hors de cette machine quoi que ce soit.
-- Ne lance **que** les dépôts synthétiques créés par les scripts du projet, les exemples du dossier `examples/`, et les trois dépôts
-  publics de `demo-real.sh`. **Aucun autre code tiers.** N'utilise pas les gros corpus (`benchmark/corpus.public*.txt`, `corpus.heldout.txt`) avec `--full`.
-- N'installe **aucun paquet système** (apt, brew, dnf…) sans me demander. Si tu ne peux pas demander, marque l'étape « non testé » et écris la
-  commande d'installation qu'il aurait fallu.
-- Ne fais jamais passer un test en le modifiant ou en l'ignorant. Un test rouge se rapporte tel quel.
-- Pour chaque étape : la commande **exacte** lancée, le code de sortie, et en cas de KO les **30 dernières lignes** de sortie brutes.
-- Durée prévue : 30 à 60 minutes ; mets un délai (`timeout`) sur tout ce qui peut bloquer. Sous macOS, `timeout` n'existe pas par défaut (`gtimeout` via coreutils) ;
-  `demo.sh` l'utilise : s'il manque, note-le (étape 4 « demo.sh non testé : timeout absent ») au lieu d'installer coreutils sans me demander.
-- Avant de partager un texte, relis-le : masque ce qui est personnel (nom, chemins, jetons). `zero report` masque déjà le dossier personnel
-  et le nom d'utilisateur, mais ce n'est qu'un filet.
+- **Do not modify any files in the repository** during steps 0 to 9. Fixes only come at step 10, on a branch.
+- Do not publish anything (no `twine upload`, no `git push`). Do not send or copy anything off this machine.
+- Runs **only** the synthetic repositories created by the project scripts, the examples from the `examples/` folder, and the three repositories
+  `demo-real.sh` public files. **No other third party code.** Does not use large corpora (`benchmark/corpus.public*.txt`, `corpus.heldout.txt`) with `--full`.
+- Do not install **any system packages** (apt, brew, dnf…) without asking me. If you can't ask, mark the step "untested" and write it
+  installation command that would have been necessary.
+- Never administer a test by modifying it or ignoring it. A red test reports as is.
+- For each step: the **exact** command launched, the exit code, and in case of KO the **30 last lines** of raw output.
+- Expected duration: 30 to 60 minutes; put a delay (`timeout`) on anything that can block. On macOS, `timeout` does not exist by default (`gtimeout` via coreutils);
+  `demo.sh` uses it: if it's missing, note it (step 4 "untested demo.sh: missing timeout") instead of installing coreutils without asking me.
+- Before sharing a text, reread it: hide what is personal (name, paths, tokens). `zero report` already hides home folder
+  and username, but it's just a trickle.
 
-## Étapes
+## Steps
 
-### 0. Mise en place
+### 0. Setting up
 ```
 unzip zerodev.zip && cd zerodev
 ./bin/zero --version            # attendu : zerodev 0.26.1
@@ -45,59 +45,59 @@ python3 --version               # attendu : ≥ 3.10
 uname -a ; (sw_vers 2>/dev/null)
 ```
 
-### 1. Tests unitaires
+### 1. Unit testing
 ```
 python3 -m unittest discover -s tests
 ```
-Attendu : `OK`, 362 tests, au plus 5 ignorés (ceux qui ont besoin de `redis-server`, `postgres`, `mariadb` ou `mysqld`). Note le nombre exact de tests et d'ignorés.
+Expected: `OK`, 362 tests, at most 5 ignored (those that need `redis-server`, `postgres`, `mariadb` or `mysqld`). Note the exact number of tests and ignores.
 
-### 2. Validation automatique (le cœur du travail)
+### 2. Automatic validation (the heart of the work)
 ```
 python3 scripts/validate_machine.py --out validate-report.txt
 ```
-Crée ses propres dépôts synthétiques, lance zero dessus, sonde le HTTP, arrête tout. Il imprime une ligne `OK` / `KO` / `SKIP` par vérification :
+Create your own synthetic repositories, run zero on them, probe HTTP, stop everything. It prints a line `OK` / `KO` / `SKIP` per check:
 
-| Vérification | Ce qu'elle prouve | Un KO veut dire |
+| Verification | What it proves | A knockout means |
 |---|---|---|
-| `node`, `python-pyproject` | installation + lancement de bout en bout | téléchargement de runtime, `uv`, `npm` |
-| `go`, `rust` | **premier vrai lancement Go et Rust** | **si KO : vérifie d'abord à la main que le dépôt synthétique du script est correct** (ces deux vérifications n'ont jamais tourné) |
-| `readme-run` | commande déduite du README (`python serve_it.py`) | la déduction ne se déclenche pas |
-| `readme-utility-refused` | un script d'outillage n'est PAS pris pour l'application | faux positif |
-| `monorepo-readme` | `cd web` + `npm start` dans le README → seul `web` est lancé | mauvais sous-projet |
-| `monorepo-ambiguous` | sans indice, zero refuse et cite `--project` | il devine à tort |
-| `foreign-hint` | dépôt Ruby : message clair + commande manuelle | message générique |
-| `report` | `zero report` masque le dossier personnel | fuite d'un chemin |
-| `sandbox` | `--sandbox` : annonce le backend et répond en HTTP, ou refuse clairement | **sur macOS : le point le plus incertain** |
-| `sandbox-blocks-home` | un dépôt isolé ne peut pas lire un fichier de `~` | **isolation inefficace : critique** |
-| `container-wrapper` | zero dans un conteneur (SKIP si l'image n'existe pas) | voir étape 5 |
+| `node`, `python-pyproject` | end-to-end installation + launch | runtime download, `uv`, `npm` |
+| `go`, `rust` | **first real launch of Go and Rust** | **if KO: first checks manually that the synthetic repository of the script is correct** (these two checks have never worked) |
+| `readme-run` | command deduced from README (`python serve_it.py`) | deduction does not trigger |
+| `readme-utility-refused` | a tooling script is NOT supported for the application | false positive |
+| `monorepo-readme` | `cd web` + `npm start` in the README → only `web` is launched | bad subproject |
+| `monorepo-ambiguous` | without a clue, zero refuses and cites `--project` | he guesses wrongly |
+| `foreign-hint` | Ruby repository: clear message + manual command | generic message |
+| `report` | `zero report` hides home folder | escape from a path |
+| `sandbox` | `--sandbox`: announces the backend and responds with HTTP, or clearly refuses | **on macOS: the most uncertain point** |
+| `sandbox-blocks-home` | an isolated repository cannot read a file from `~` | **ineffective insulation: critical** |
+| `container-wrapper` | zero in a container (SKIP if the image does not exist) | see step 5 |
 
-Si une vérification est KO, relance-la seule pour la reproduire : `python3 scripts/validate_machine.py --only <nom> --timeout 300`.
-Ajoute `--keep-home` pour réutiliser le cache de ton `~/.zero` si le réseau est lent.
+If a check is KO, rerun it alone to reproduce it: `python3 scripts/validate_machine.py --only <nom> --timeout 300`.
+Add `--keep-home` to reuse the cache of your `~/.zero` if the network is slow.
 
-### 3. État de la machine et rapport
+### 3. Machine Status and Report
 ```
 ./bin/zero doctor > doctor.txt
 ./bin/zero report examples/node-app > report.txt     # relis-le avant de le joindre
 ```
-Joins `doctor.txt` et `report.txt`. Note en particulier : « bubblewrap utilisable » (Linux) ou « sandbox-exec (macOS) utilisable » (Mac),
-Docker/Podman détecté, GPU détecté.
+Joins `doctor.txt` and `report.txt`. Note in particular: “usable bubblewrap” (Linux) or “usable sandbox-exec (macOS)” (Mac),
+Docker/Podman detected, GPU detected.
 
-### 4. Démos
+### 4. Demos
 ```
 ./demo.sh          # 5 exemples, ~2 min, 15 s chacun
 ./demo-real.sh     # 3 vrais dépôts publics (Node ; Python/Django ; Flask + Redis + PostgreSQL), ~4 min
 ```
-Attendu : `demo.sh` sans erreur Python ; `demo-real.sh` se termine par « 3/3 dépôts répondent en HTTP sans édition manuelle ». Le troisième dépôt
-(`microblog`) a besoin de Redis et PostgreSQL : conteneurs (Docker/Podman) ou binaires locaux ; sans aucun des deux il échoue avec un message
-(« ÉCHEC »), à noter. Joins `log.txt` / `report.json` indiqués à la dernière ligne.
+Expected: `demo.sh` without Python error; `demo-real.sh` ends with "3/3 repositories respond in HTTP without manual editing." The third deposit
+(`microblog`) needs Redis and PostgreSQL: containers (Docker/Podman) or local binaries; without either it fails with a message
+(“FAIL”), note. Joins `log.txt` / `report.json` indicated in the last line.
 
-### 5. Conteneurs — seulement si `docker` ou `podman` est présent
-a) Services en conteneur :
+### 5. Containers — only if `docker` or `podman` is present
+a) Container services:
 ```
 timeout -s INT 30 ./bin/zero run --services container examples/fullstack-app      # (macOS : `gtimeout`, ou Ctrl-C à la main)
 docker ps -a --filter name=zero-       # (ou podman) attendu : AUCUN conteneur zero-… restant
 ```
-b) **Image zero-dans-un-conteneur (jamais construite)** :
+b) **Zero-image-in-a-container (never built)**:
 ```
 docker build -f contrib/Dockerfile -t zerodev:latest .          # (ou podman build)
 docker run --rm zerodev:latest --version                         # attendu : zerodev 0.26.1
@@ -105,30 +105,30 @@ ZERO_PORTS=3000 timeout -s INT 90 contrib/zero-container.sh examples/node-app &
 sleep 45; curl -s localhost:3000                                # attendu : hello from node-demo
 python3 scripts/validate_machine.py --only container-wrapper --timeout 300
 ```
-c) **Isolation** : `contrib/zero-container.sh examples/node-app --cmd "ls ~/.ssh ; ls /home"` ne doit montrer **rien** de ton dossier personnel réel.
-Si le build échoue, c'est probablement un paquet système manquant dans l'image : note l'erreur exacte (ne corrige pas encore).
+c) **Isolation**: `contrib/zero-container.sh examples/node-app --cmd "ls ~/.ssh ; ls /home"` should not show **anything** from your actual personal file.
+If the build fails, it's probably a system package missing from the image: note the exact error (don't fix it yet).
 
-### 6. Services locaux (sans conteneur) — seulement si `redis-server` et `postgres`/`initdb` sont installés
+### 6. Local services (without container) — only if `redis-server` and `postgres`/`initdb` are installed
 ```
 timeout -s INT 30 ./bin/zero run --services local examples/fullstack-app          # arrêt après 30 s
 pgrep -fa "postgres -D|redis-server"                             # attendu : VIDE après l'arrêt
 python3 -m unittest tests.test_zerodev.TestRealMysqlCompose -v   # attendu : OK, pas « skipped » (si mysqld ou mariadbd présent ; note la version)
 ```
 
-### 7. Sandbox, vérifications manuelles complémentaires
+### 7. Sandbox, additional manual checks
 ```
 ./bin/zero run --sandbox examples/node-app          # attendu : « mode isolé (<backend>) » puis HTTP 200 sur :3000
 ./bin/zero run --sandbox examples/python-app
 echo SECRET > ~/.zero-codex-test ; ./bin/zero run --sandbox --cmd "cat ~/.zero-codex-test" examples/node-app ; rm ~/.zero-codex-test
 ```
-Attendu : le contenu `SECRET` n'apparaît **jamais**. Sur macOS, si tu vois « Operation not permitted », copie la ligne exacte et **l'outil concerné**
-(nvm, Homebrew, `~/Library`…) : le profil est probablement trop strict.
+Expected: `SECRET` content **never** appears. On macOS, if you see “Operation not permitted”, copy the exact line and **the tool concerned**
+(nvm, Homebrew, `~/Library`…): the profile is probably too strict.
 
-### 8. Un dépôt réel supplémentaire (facultatif, avec mon accord explicite)
-Demande-moi un dépôt à moi. Sinon, saute. Puis : `./bin/zero plan <dépôt>` (commande détectée), `./bin/zero run <dépôt>`, note la première erreur et si
-un « correctif automatique » a été appliqué.
+### 8. An additional real deposit (optional, with my explicit agreement)
+Ask me for a deposit of my own. Otherwise, jump. Then: `./bin/zero plan <dépôt>` (command detected), `./bin/zero run <dépôt>`, note the first error and if
+an “automatic fix” has been applied.
 
-### 9. Construction du paquet (sans publier)
+### 9. Building the package (without publishing)
 ```
 python3 -m venv /tmp/v && /tmp/v/bin/pip install build twine
 /tmp/v/bin/python -m build --outdir /tmp/dist .
@@ -136,17 +136,17 @@ python3 -m venv /tmp/v && /tmp/v/bin/pip install build twine
 python3 -m venv /tmp/v2 && /tmp/v2/bin/pip install /tmp/dist/*.whl && /tmp/v2/bin/zero --version    # attendu : zerodev 0.26.1
 ```
 
-### 10. Corrections (seulement après avoir fini les étapes 0 à 9)
-Pour chaque KO **reproductible** dont tu comprends la cause :
-1. `git switch -c codex-fixes` (une seule branche).
-2. Écris d'abord un test qui échoue, puis la correction **minimale**, puis relance `python3 -m unittest discover -s tests` (tout doit rester vert).
-3. Un commit par correction, message : « fix: <symptôme> (<étape>) ».
-4. Si la cause vient de ton environnement (outil absent, réseau filtré, droits), ce n'est **pas** un bug de zero : n'y touche pas, note-le.
-Fichiers utiles : `src/zerodev/sandbox.py` (isolation Linux/macOS), `plan.py` (détection, README, monorepos), `runtimes.py` (téléchargement Node/Go/Rust/uv),
-`core.py` (orchestration), `services.py` / `localsvc.py` (Redis/PostgreSQL), `doctor.py`, `report.py`, `contrib/` (conteneur), `docs/VALIDATION.md`, `docs/CONTAINER.md`.
-Ne change pas les messages en français ni le comportement hors du symptôme corrigé.
+### 10. Corrections (only after finishing steps 0 to 9)
+For each **reproducible** knockout for which you understand the cause:
+1. `git switch -c codex-fixes` (single branch).
+2. First write a test that fails, then the **minimal** correction, then rerun `python3 -m unittest discover -s tests` (everything should stay green).
+3. One commit per fix, message: “fix: <symptom> (<step>)”.
+4. If the cause comes from your environment (tool missing, filtered network, rights), it is **not** a zero bug: don't touch it, note it.
+Useful files: `src/zerodev/sandbox.py` (Linux/macOS isolation), `plan.py` (detection, README, monorepos), `runtimes.py` (Node/Go/Rust/uv download),
+`core.py` (orchestration), `services.py` / `localsvc.py` (Redis/PostgreSQL), `doctor.py`, `report.py`, `contrib/` (container), `docs/VALIDATION.md`, `docs/CONTAINER.md`.
+Does not change the messages in French or the behavior outside of the corrected symptom.
 
-## Format du rapport final (fichier `RAPPORT_CODEX.md`, une ligne par étape)
+## Format of the final report (file `RAPPORT_CODEX.md`, one line per step)
 
 ```
 machine : <OS, version, architecture, noyau> — zero 0.26.1 — Python <x> — docker/podman : <oui/non>
@@ -169,4 +169,4 @@ Pour chaque KO : commande exacte, code de sortie, 30 dernières lignes brutes, t
 En dernier : « ce que je n'ai pas pu tester et pourquoi ».
 ```
 
-Joins : `RAPPORT_CODEX.md`, `validate-report.txt`, `doctor.txt`, `report.txt`, et les `git log --oneline` / `git diff` de `codex-fixes`.
+Attached: `RAPPORT_CODEX.md`, `validate-report.txt`, `doctor.txt`, `report.txt`, and `git log --oneline` / `git diff` of `codex-fixes`.

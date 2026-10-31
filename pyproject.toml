@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "zerodev"
 dynamic = ["version"]
-description = "git clone && zero. — environnement de développement auto-reproductible"
+description = "git clone && zero. — reproducible development environments"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []

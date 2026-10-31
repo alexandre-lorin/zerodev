@@ -1,28 +1,28 @@
-# Publier zerodev sur PyPI
+# Publish zerodev on PyPI
 
-État vérifié (0.25.0, sandbox Linux) : `python -m build` produit un sdist et une roue (`py3-none-any`, aucune dépendance) ;
-`twine check` : PASSED pour les deux ; la roue installée dans un venv vierge donne `zero --version` → `zerodev 0.25.0` et
-`zero plan <dépôt>` fonctionne. Le nom `zerodev` (ainsi que `zero-dev` et `zerodev-cli`) renvoyait 404 sur PyPI le 27/10/2026,
-donc libre à cette date : à revérifier juste avant de publier. **Rien n'a été publié** : il faut un compte PyPI.
+State checked (0.25.0, Linux sandbox): `python -m build` produces an sdist and a wheel (`py3-none-any`, no dependencies);
+`twine check`: PASSED for both; the wheel installed in a blank venv gives `zero --version` → `zerodev 0.25.0` and
+`zero plan <dépôt>` works. The name `zerodev` (along with `zero-dev` and `zerodev-cli`) returned 404 on PyPI on 27/10/2026,
+therefore free on this date: to be rechecked just before publishing. **Nothing has been published**: you need a PyPI account.
 
-## Procédure
+## Procedure
 
     pip install build twine
-    git status                                   # arbre propre
-    python -m unittest discover -s tests         # tout OK
+    git status # clean tree
+    python -m unittest discover -s tests # all OK
     python -m build --outdir dist .
     twine check dist/*
-    twine upload --repository testpypi dist/*    # répétition sur test.pypi.org (compte distinct)
-    pipx install --index-url https://test.pypi.org/simple/ zerodev    # contrôle
-    twine upload dist/*                          # publication réelle (jeton API, pas le mot de passe)
+    twine upload --repository testpypi dist/* # repeat on test.pypi.org (separate account)
+    pipx install --index-url https://test.pypi.org/simple/ zerodev # control
+    twine upload dist/* # actual post (API token, not password)
 
-Une version publiée est **définitive** (on ne peut ni la remplacer ni la réutiliser) : incrémenter `VERSION` dans
-`src/zerodev/util.py` (source unique) avant chaque publication. Ne jamais commiter `dist/` ni `build/`.
+A published version is **final** (it cannot be replaced or reused): increment `VERSION` in
+`src/zerodev/util.py` (single source) before each publication. Never commit `dist/` or `build/`.
 
-## À savoir avant d'annoncer « pipx install zerodev »
+## Know before announcing “pipx install zerodev”
 
-- Le dépôt s'utilise aujourd'hui par `git clone` + `./bin/zero` ou `install.sh` ; les exemples (`examples/`) et `demo.sh` ne sont
-  **pas** dans la roue : `pipx install` donne la commande `zero`, pas les démos.
-- `uv` est installé par zero au besoin ; Docker/Podman restent facultatifs. Python ≥ 3.10 requis.
-- Le README est le long_description : ses liens relatifs (docs/…) ne fonctionneront pas sur la page PyPI ; les remplacer par des URL
-  absolues du dépôt public une fois l'adresse connue.
+- The repository is used today by `git clone` + `./bin/zero` or `install.sh`; the examples (`examples/`) and `demo.sh` are not
+  **step** in the wheel: `pipx install` gives the command `zero`, not the demos.
+- `uv` is installed by zero if necessary; Docker/Podman remain optional. Python ≥ 3.10 required.
+- The README is the long_description: its relative links (docs/…) will not work on the PyPI page; replace them with URLs
+  absolute of the public deposit once the address is known.

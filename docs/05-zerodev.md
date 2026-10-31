@@ -1,13 +1,13 @@
 # ZeroDev
 
-> **Catégorie** : environnement de développement auto-reproductible  
-> **Ambition** : rendre tout dépôt Git exécutable avec une commande, sans configuration manuelle  
-> **Horizon** : 1 à 3 ans  
-> **Hook GitHub** : **git clone && zero.**
+> **Category**: self-reproducible development environment  
+> **Ambition**: make any Git repository executable with a command, without manual configuration  
+> **Horizon**: 1 to 3 years  
+> **Hook GitHub**: **git clone && zero.**
 
 ## 1. Vision
 
-Aujourd’hui :
+Today:
 
 ```text
 clone repo
@@ -29,7 +29,7 @@ FFmpeg
 README outdated
 ```
 
-ZeroDev vise :
+ZeroDev aims:
 
 ```bash
 git clone repo
@@ -37,13 +37,13 @@ cd repo
 zero
 ```
 
-et le projet tourne.
+and the project is running.
 
-## 2. Principe
+## 2. Principle
 
-Analyser automatiquement : `package.json`, `pyproject.toml`, `requirements.txt`, `Cargo.toml`, `go.mod`, Dockerfile, compose, Makefile, `.nvmrc`, `.tool-versions`, README, CI config et imports source.
+Automatically scan: `package.json`, `pyproject.toml`, `requirements.txt`, `Cargo.toml`, `go.mod`, Dockerfile, compose, Makefile, `.nvmrc`, `.tool-versions`, README, CI config and imports source.
 
-Puis produire un plan : runtimes, DB, services, libs, env vars, ports, GPU requirements.
+Then produce a plan: runtimes, DB, services, libs, env vars, ports, GPU requirements.
 
 ## 3. Architecture
 
@@ -65,43 +65,43 @@ Services
 Process Supervisor
 ```
 
-Backends possibles : Nix, Podman/containers, bubblewrap, system packages, language version managers.
+Possible backends: Nix, Podman/containers, bubblewrap, system packages, language version managers.
 
 ## 4. V0
 
 Support Node, Python, Rust.
 
-`zero` doit détecter le langage/version, installer runtime isolé, installer dépendances, détecter la commande principale et lancer le projet.
+`zero` should detect language/version, install isolated runtime, install dependencies, detect main command and launch project.
 
 ## 5. V1
 
 Databases, Redis, queues, workers, ports, `.env` templates, health checks, service graph.
 
-## 6. V2 : zero freeze
+## 6. V2: zero freeze
 
 ```bash
 zero freeze
 ```
 
-Produit une définition reproductible avec runtimes, versions, deps, system libs, services, ports, env et besoins GPU.
+Produces a reproducible definition with runtimes, versions, deps, system libs, services, ports, env and GPU requirements.
 
-## 7. V3 : zero share
+## 7. V3: zero shares
 
 ```bash
 zero share
 ```
 
-Quelqu’un d’autre recrée exactement l’environnement.
+Someone else recreates the environment exactly.
 
-Objectif : **works on my machine → here is my machine state.**
+Objective: **works on my machine → here is my machine state.**
 
-## 8. V4 : automatic recovery
+## 8. V4: automatic recovery
 
-Erreur process → diagnostics → hypothèse de dépendance → retry sandbox, avec changements toujours inspectables.
+Process error → diagnostics → dependency hypothesis → retry sandbox, with changes always inspectable.
 
-## 9. Registry facultatif
+## 9. Optional registry
 
-Fingerprint de repo → environnement connu fonctionnel, sans dépendance cloud obligatoire.
+Repo fingerprint → functional known environment, without mandatory cloud dependency.
 
 ## 10. GPU / AI projects
 
@@ -111,32 +111,32 @@ Support CUDA, ROCm, Vulkan, model files, wheels GPU, llama.cpp, PyTorch, ComfyUI
 zero https://github.com/some-ai-project
 ```
 
-## 11. Différence avec Docker
+## 11. Difference with Docker
 
-Docker suppose généralement que quelqu’un a déjà décrit l’environnement. ZeroDev tente de le **déduire à partir du repo**.
+Docker generally assumes that someone has already described the environment. ZeroDev attempts to **infer it from the repo**.
 
-## 12. Différence avec “une IA écrit un Dockerfile”
+## 12. Difference from “an AI writes a Dockerfile”
 
-ZeroDev doit rester déterministe, cacheable, testable, reproductible et inspectable. L’IA aide seulement dans les cas ambigus.
+ZeroDev must remain deterministic, cacheable, testable, reproducible and inspectable. AI only helps in ambiguous cases.
 
-## 13. Problèmes de R&D
+## 13. R&D issues
 
-Versions, dépendances système implicites, services externes, secrets, vieux projets, CUDA, scripts install, monorepos, architectures CPU, docs fausses.
+Versions, implicit system dependencies, external services, secrets, old projects, CUDA, install scripts, monorepos, CPU architectures, fake docs.
 
-## 14. À ne pas faire
+## 14. What not to do
 
-Pas d’IDE complet, cloud dev environment, SaaS, CI/CD, agent coding ou hosting au début.
+No full IDE, cloud dev environment, SaaS, CI/CD, agent coding or hosting at the start.
 
-Promesse initiale : **clone → zero → run.**
+Initial promise: **clone → zero → run.**
 
-## 15. Benchmark public
+## 15. Public benchmark
 
-Créer un corpus de 100, puis 500, puis 1000 repos publics. Mesurer détection, build, lancement, temps jusqu’au premier run et interventions humaines.
+Create a corpus of 100, then 500, then 1000 public repositories. Measure detection, build, launch, time to first run and human interventions.
 
-## 16. Démo GitHub
+## 16. GitHub demo
 
-Trois repos très différents, dont un ancien : `zero` → ils tournent sans édition manuelle.
+Three very different repos, including an old one: `zero` → they run without manual editing.
 
 ## 17. North Star
 
-La section « Installation » des README devient progressivement inutile.
+The “Installation” section of the README gradually becomes useless.

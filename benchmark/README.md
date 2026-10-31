@@ -1,52 +1,52 @@
-# Benchmark ZeroDev : corpus, résultats, comment les lire
+# Benchmark ZeroDev: corpus, results, how to read them
 
-`zero bench <corpus.txt>` clone chaque dépôt, calcule le plan et classe le résultat (**détection seule**, rien n'est lancé) ; avec `--full` il lance réellement chaque
-dépôt (code tiers arbitraire : voir `docs/VALIDATION.md` avant de le faire chez vous, et `ZERO_BENCH_CLEANUP=1` pour nettoyer le disque).
+`zero bench <corpus.txt>` clones each repository, calculates the plan and classifies the result (**detection only**, nothing is launched); with `--full` it actually launches each
+deposit (arbitrary third-party code: see `docs/VALIDATION.md` before doing it at home, and `ZERO_BENCH_CLEANUP=1` to clean the disk).
 
-## Ce que mesurent les champs
-- `status` (détection) : `runnable` (une commande est trouvée), `no_run_command`, `ambiguous_entrypoint`, `ambiguous_monorepo`, `unsupported`, `clone_failed`, `detector_error`.
-  **Une commande trouvée n'est pas une commande juste, ni qui démarre.** `run_inferred` / `entry_from_docs` / `deps_deduced` marquent les heuristiques de dernier recours (Makefile, preuve README/Dockerfile,
-  imports déduits) ; le taux « strict » les exclut.
-- `phase` (lancement réel) : `install_failed`, `install_timeout`, `run`, `disk_full` ; `built` = installation terminée et lancement commencé ; `launched` = un processus est encore vivant à la fin du délai ;
-  `http` = un port en écoute de l'arbre de processus a répondu en HTTP (n'importe quel code : un 404 ou un 401 compte comme « répond ») ; `cli_tool` = a affiché une aide et quitté.
-- Les rapports `--full` sont sauvegardés après chaque dépôt (`"partial": true` si le benchmark a été interrompu).
+## What the fields measure
+- `status` (detection): `runnable` (an order is found), `no_run_command`, `ambiguous_entrypoint`, `ambiguous_monorepo`, `unsupported`, `clone_failed`, `detector_error`.
+  **A command found is not a fair command, nor one that starts.** `run_inferred` / `entry_from_docs` / `deps_deduced` mark last resort heuristics (Makefile, README/Dockerfile proof,
+  imports deducted); the “strict” rate excludes them.
+- `phase` (real launch): `install_failed`, `install_timeout`, `run`, `disk_full`; `built` = installation completed and launch started; `launched` = a process is still alive at the end of the timeout;
+  `http` = a port listening in the process tree responded in HTTP (any code: a 404 or a 401 counts as "responds"); `cli_tool` = displayed help and exited.
+- `--full` reports are saved after each deposit (`"partial": true` if the benchmark was interrupted).
 
 ## Corpus
-| Fichier | Contenu | Nature |
+| File | Content | Nature |
 |---|---|---|
-| `corpus.sample.txt` | 5 entrées d'exemple | exemples du dépôt |
-| `corpus.public.txt` | 96 dépôts publics | **choisis à la main** (et réglés sur eux : surestime la détection d'une quinzaine de points) |
-| `corpus.heldout.txt` | 39 dépôts | choisis à la main, hors échantillon de réglage (un peu moins optimiste) |
-| `corpus.public500.txt` / `corpus.public500b.txt` | 500 + 500 dépôts | **règle fixe** (API GitHub, `language:<L> stars:<lo>..<hi> archived:false`, tri par mise à jour, 100 par langage python/javascript/typescript/go/rust) : lot 1 = 500..3000 étoiles, lot 2 = 100..499 ; reproductible avec `build_corpus_rule.py` (les résultats dépendent de la date d'exécution) |
-| `corpus.demo.txt` | 3 dépôts | la démo de `demo-real.sh` |
-| `build_corpus.py` | générateur historique par thèmes (webapp, cli, bot…) | non utilisé pour les corpus ci-dessus ; demande un jeton pour de gros volumes |
+| `corpus.sample.txt` | 5 example entries | examples of the repository |
+| `corpus.public.txt` | 96 public repositories | **chosen by hand** (and adjusted to them: overestimates the detection by around fifteen points) |
+| `corpus.heldout.txt` | 39 deposits | hand-picked, excluding tuning sample (a little less optimistic) |
+| `corpus.public500.txt` / `corpus.public500b.txt` | 500 + 500 deposits | **fixed rule** (GitHub API, `language:<L> stars:<lo>..<hi> archived:false`, sort by update, 100 by language python/javascript/typescript/go/rust): batch 1 = 500..3000 stars, batch 2 = 100..499 ; reproducible with `build_corpus_rule.py` (results depend on execution date) |
+| `corpus.demo.txt` | 3 deposits | the demo of `demo-real.sh` |
+| `build_corpus.py` | historical generator by theme (webapp, cli, bot, etc.) | not used for the corpora above; requests a token for large volumes |
 
-Dépôts de plus de 300 Mo (taille de l'API, historique complet) : écartés à l'évaluation (176 sur les 1000 : 98 + 78), donc les mesures décrivent surtout des applications légères.
+Deposits of more than 300 MB (API size, complete history): discarded during evaluation (176 on 1000: 98 + 78), so the measurements mainly describe lightweight applications.
 
-## Résultats de détection (`results/`)
-| Fichier | Corpus, code | Résultat |
+## Detection results (`results/`)
+| File | Corpus, code | Result |
 |---|---|---|
-| `public-v3.json` | 96 à la main, ~0.9 | 69/96 = 71,9 % |
-| `public-v4.json` | idem remesuré, ~0.12 | 68/96 = 70,8 % (`pallets/flask` écarté à dessein) |
-| `heldout-v1.json` / `heldout-v2.json` | 39 hors échantillon, 0.9.1 puis ~0.12 | 25/37 puis 24/37 clonés |
+| `public-v3.json` | Handmade 96, ~0.9 | 69/96 = 71,9 % |
+| `public-v4.json` | same remeasured, ~0.12 | 68/96 = 70,8 % (`pallets/flask` excluded on purpose) |
+| `heldout-v1.json` / `heldout-v2.json` | 39 out of sample, 0.9.1 then ~0.12 | 25/37 then 24/37 cloned |
 | `public500-v1.json` | lot 1, code 0.12 | 214/402 = 53,2 % |
-| `public500b-v1.json` | lot 2, code 0.12 | 240/422 = 56,9 % |
-| `public1000-remeasure-v0.20.json` | **les 823 dépôts des deux lots, code 0.20** | **473/823 = 57,5 %**, dont 53,5 % sans heuristique de dernier recours (**chiffre à retenir**) |
+| `public500b-v1.json` | batch 2, code 0.12 | 240/422 = 56,9 % |
+| `public1000-remeasure-v0.20.json` | **the 823 deposits of the two batches, code 0.20** | **473/823 = 57,5 %**, including 53,5 % without last resort heuristic (**figure to remember**) |
 
-## Résultats de lancement réel (`results/live-*.json`) : petits échantillons, à ne pas extrapoler
-| Fichier | Contenu | Réserve |
+## Actual launch results (`results/live-*.json`): small samples, do not extrapolate
+| File | Content | Reserve |
 |---|---|---|
-| `live-v1`, `live-v2-old-repos`, `live-v3-batch2`, `live-v4-http-probe`, `live-v5-batch3`, `live-v5b-microblog-with-services`, `live-v6-bun`, `live-v7-batch4`, `live-v8-batch5`, `live-v9-batch6` | essais successifs de 2 à 8 dépôts (versions 0.8 à 0.11), dépôts choisis à la main puis par l'API | historiques ; c'est de là que viennent la plupart des correctifs (voir `docs/CHANGELOG.md`) |
-| `live-v10-sample500.json` | tirage de 22 dépôts « exécutables » du lot 1 (Node/Python) | **fragile** : le disque du sandbox s'est saturé, 4 clonages perdus ; premier tirage |
-| `live-v11-sample2.json` | 16 dépôts (graine 7) | sans incident disque |
-| `live-v12-sample3.json`, `live-v13-sample3-replay.json` | 24 dépôts (graine 11), puis rejeu des mêmes après correctifs | v13 : avant/après sur le **même** échantillon, donc pas indépendant ; `wind-comic` y a été rejoué seul (disque plein) |
-| `live-v14-sample4-node.json` | 22 dépôts Node (graine 23) | le plus indépendant (aucun correctif conçu dessus) ; 2 non évalués (disque) |
-| `live-v15-slow6-240s.json` | 6 gros monorepos rejoués avec un délai de 240 s | délai de 75 s insuffisant avant |
-| `live-v16-old-repos-20.json` | 20 vieux dépôts (derniers commits 2015-2018), §16 | 2 répondent en HTTP |
-| `live-v17-starters.json` | 16 starters (Next, Vite, Django, Flask), **seconde passe** après correctifs | le rapport de la première passe a été perdu |
-| `live-v18-python-replay.json` | 10 dépôts Python qui avaient échoué, rejoués | même ensemble que les tirages précédents : pas indépendant ; gain faible |
-| `live-v19-runtime-hint-ab.json` | A/B avec et sans la version déduite du Dockerfile/de la CI, mêmes 13 dépôts | 12 identiques, 1 pire (corrigé), 0 meilleur |
+| `live-v1`, `live-v2-old-repos`, `live-v3-batch2`, `live-v4-http-probe`, `live-v5-batch3`, `live-v5b-microblog-with-services`, `live-v6-bun`, `live-v7-batch4`, `live-v8-batch5`, `live-v9-batch6` | successive tests from 2 to 8 repositories (versions 0.8 to 0.11), repositories chosen by hand then by the API | historical; this is where most fixes come from (see `docs/CHANGELOG.md`) |
+| `live-v10-sample500.json` | drawing 22 “executable” repositories from batch 1 (Node/Python) | **fragile**: the sandbox disk has become full, 4 clones lost; first print |
+| `live-v11-sample2.json` | 16 repositories (7 seed) | without disk incident |
+| `live-v12-sample3.json`, `live-v13-sample3-replay.json` | 24 repositories (seed 11), then replay of the same after fixes | v13: before/after on the **same** sample, therefore not independent; `wind-comic` was replayed there alone (full disc) |
+| `live-v14-sample4-node.json` | 22 Node repositories (23 seed) | the most independent (no fixes designed on it); 2 unrated (disk) |
+| `live-v15-slow6-240s.json` | 6 large monorepos replayed with a delay of 240 s | 75 insufficient time before |
+| `live-v16-old-repos-20.json` | 20 old repositories (latest commits 2015-2018), §16 | 2 respond using HTTP |
+| `live-v17-starters.json` | 16 starters (Next, Vite, Django, Flask), **second pass** after fixes | first pass report lost |
+| `live-v18-python-replay.json` | 10 Python repositories that had failed, replayed | same set as previous prints: not independent; low gain |
+| `live-v19-runtime-hint-ab.json` | A/B with and without version inferred from Dockerfile/CI, same 13 repositories | 12 same, 1 worse (fixed), 0 better |
 
-**Ordre de grandeur à retenir : environ un dépôt « exécutable » sur quatre sert une page HTTP** (beaucoup sont des outils en ligne de commande, des bibliothèques ou exigent un terminal/un écran).
-Ne comparez pas deux fichiers sans regarder la version du code qui les a produits (`docs/CHANGELOG.md`) ; les clones sont ceux du jour de la mesure, les dépôts évoluent (un script `dev` supprimé
-suffit à faire passer un dépôt de « exécutable » à « sans commande »).
+**Order of magnitude to remember: approximately one in four "executable" repositories serves an HTTP page** (many are command line tools, libraries, or require a terminal/screen).
+Don't compare two files without looking at the version of the code that produced them (`docs/CHANGELOG.md`); the clones are those of the day of the measurement, the deposits evolve (a script `dev` deleted
+is enough to change a repository from "executable" to "no command").
