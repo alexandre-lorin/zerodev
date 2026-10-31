@@ -1,0 +1,58 @@
+{
+  "summary": {
+    "repos": 1,
+    "cloned": 1,
+    "status": {
+      "runnable": 1
+    },
+    "detected": 1,
+    "detection_rate": 1.0,
+    "detection_rate_of_cloned": 1.0,
+    "by_language": {
+      "node": {
+        "repos": 1,
+        "runnable": 1
+      }
+    },
+    "built": 1,
+    "launched": 1,
+    "http_ok": 1,
+    "build_rate": 1.0,
+    "launch_rate": 1.0,
+    "median_ttfr_s": 19.1,
+    "interventions_auto": 0,
+    "interventions_manual": 0,
+    "zero_touch": 1
+  },
+  "results": [
+    {
+      "repo": "https://github.com/tiangolo/full-stack-fastapi-template",
+      "clone_s": 0.0,
+      "lang": "node",
+      "version": null,
+      "run": "bun run dev",
+      "subproject": null,
+      "services": [
+        "postgres"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true,
+      "built": true,
+      "launched": true,
+      "ttfr_s": 19.1,
+      "listening_ports": [
+        5173,
+        5432
+      ],
+      "http": {
+        "port": 5173,
+        "status": 200
+      },
+      "interventions_auto": 0,
+      "interventions_manual": 0,
+      "exit_code": null,
+      "tail": "frontend dev: \nfrontend dev:   ➜  Local:   http://localhost:5173/\nfrontend dev:   ➜  Network: use --host to expose\nfrontend dev: 11:03:11 AM [vite] (client) [optimizer] bundling dependencies...\nerror: script \"dev\" was terminated by signal SIGTERM (Polite quit request)"
+    }
+  ]
+}

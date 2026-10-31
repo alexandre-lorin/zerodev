@@ -1,0 +1,187 @@
+{
+  "summary": {
+    "repos": 8,
+    "cloned": 8,
+    "status": {
+      "unsupported": 1,
+      "runnable": 5,
+      "no_run_command": 2
+    },
+    "detected": 5,
+    "detection_rate": 0.625,
+    "detection_rate_of_cloned": 0.625,
+    "by_language": {
+      "inconnu": {
+        "repos": 1,
+        "runnable": 0
+      },
+      "python": {
+        "repos": 3,
+        "runnable": 3
+      },
+      "node": {
+        "repos": 3,
+        "runnable": 2
+      },
+      "go": {
+        "repos": 1,
+        "runnable": 0
+      }
+    },
+    "built": 4,
+    "launched": 1,
+    "http_ok": 0,
+    "build_rate": 0.5,
+    "launch_rate": 0.125,
+    "median_ttfr_s": 9.0,
+    "interventions_auto": 0,
+    "interventions_manual": 0,
+    "zero_touch": 1
+  },
+  "results": [
+    {
+      "repo": "https://github.com/heroku/ruby-getting-started",
+      "clone_s": 0.6,
+      "status": "unsupported",
+      "error": "aucun projet Node, Python, Rust ou Go détecté",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/pallets/flask",
+      "clone_s": 0.8,
+      "lang": "python",
+      "version": ">=3.10",
+      "run": "flask",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true,
+      "built": true,
+      "launched": false,
+      "ttfr_s": 3.1,
+      "listening_ports": [],
+      "http": null,
+      "interventions_auto": 0,
+      "interventions_manual": 0,
+      "exit_code": 2,
+      "tail": "Commands:\n  routes  Show the routes for the app.\n  run     Run a development server.\n  shell   Run a shell in the app context."
+    },
+    {
+      "repo": "https://github.com/miguelgrinberg/microblog",
+      "clone_s": 0.6,
+      "lang": "python",
+      "version": null,
+      "run": "flask db upgrade; flask translate compile; gunicorn microblog:app",
+      "subproject": null,
+      "services": [
+        "postgres",
+        "redis"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true,
+      "built": true,
+      "launched": false,
+      "ttfr_s": 7.7,
+      "listening_ports": [],
+      "http": null,
+      "interventions_auto": 0,
+      "interventions_manual": 0,
+      "exit_code": 1,
+      "tail": "redis requis mais ni podman ni docker, et pas de binaire local — démarrez-le sur localhost:6379\n\u001b[1;36m[zero]\u001b[0m lancement : flask db upgrade; flask translate compile; gunicorn microblog:app | rq worker microblog-tasks\nworker  | ERROR:root:Error 111 connecting to localhost:6379. Connection refused."
+    },
+    {
+      "repo": "https://github.com/sahat/megaboilerplate",
+      "clone_s": 1.1,
+      "lang": "node",
+      "version": "6.1.0",
+      "run": "npm run start",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true,
+      "built": false,
+      "launched": false,
+      "ttfr_s": null,
+      "listening_ports": [],
+      "http": null,
+      "interventions_auto": 0,
+      "interventions_manual": 0,
+      "exit_code": 1,
+      "tail": "at Object.Module._extensions..js (module.js:550:10)\n    at Module.load (module.js:456:32)\n    at tryModuleLoad (module.js:415:12)\n    at Function.Module._load (module.js:407:3)\n\u001b[1;31m[zero] erreur :\u001b[0m commande échouée : npm install"
+    },
+    {
+      "repo": "https://github.com/expressjs/express",
+      "clone_s": 0.6,
+      "lang": "node",
+      "version": ">= 18",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "no_run_command",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/gin-gonic/examples",
+      "clone_s": 0.4,
+      "lang": "go",
+      "version": "1.26.0",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "no_run_command",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/tiangolo/full-stack-fastapi-template",
+      "clone_s": 0.6,
+      "lang": "node",
+      "version": null,
+      "run": "npm run dev",
+      "subproject": null,
+      "services": [
+        "postgres"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true,
+      "built": true,
+      "launched": false,
+      "ttfr_s": 83.1,
+      "listening_ports": [],
+      "http": null,
+      "interventions_auto": 0,
+      "interventions_manual": 0,
+      "exit_code": 127,
+      "tail": "> dev\n> bun run --filter frontend dev\n\nsh: 1: bun: not found"
+    },
+    {
+      "repo": "https://github.com/django/djangoproject.com",
+      "clone_s": 0.7,
+      "lang": "python",
+      "version": "==3.12.*",
+      "run": "make run",
+      "subproject": null,
+      "services": [
+        "postgres",
+        "redis"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true,
+      "built": true,
+      "launched": true,
+      "ttfr_s": 10.3,
+      "listening_ports": [],
+      "http": null,
+      "interventions_auto": 0,
+      "interventions_manual": 0,
+      "exit_code": null,
+      "tail": "postgresql/.s.PGSQL.5432\" failed: No such file or directory\nweb     | \tIs the server running locally and accepting connections on that socket?\nscss    | make: *** wait: No child processes.  Stop.\nscss    | make: *** Waiting for unfinished jobs....\nscss    | make: *** wait: No child processes.  Stop."
+    }
+  ]
+}

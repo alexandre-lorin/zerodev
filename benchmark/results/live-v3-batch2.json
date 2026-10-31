@@ -1,0 +1,139 @@
+{
+  "environment": "sandbox Linux, Python 3.12, redis-server et postgresql 16 locaux installés par l'agent ; zerodev 0.10.1. « launched » = processus vivant à la fin du délai, SANS vérification HTTP",
+  "summary": {
+    "repos": 6,
+    "built": 6,
+    "launched": 5
+  },
+  "results": [
+    {
+      "repo": "https://github.com/gothinkster/node-express-realworld-example-app",
+      "clone_s": 0.5,
+      "lang": "node",
+      "version": null,
+      "run": "npm run start",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true,
+      "built": true,
+      "launched": true,
+      "ttfr_s": 46.0,
+      "interventions_auto": 0,
+      "interventions_manual": 0,
+      "exit_code": null,
+      "tail": "- api:serve:development\n   \n   Hint: run the command with --verbose for more details.",
+      "note": "lancé sans intervention (un démon Nx du dépôt survit à l'arrêt : il s'auto-détache, ce n'est pas un enfant de zero)"
+    },
+    {
+      "repo": "https://github.com/sahat/hackathon-starter",
+      "clone_s": 0.3,
+      "lang": "node",
+      "version": ">=24.18.0",
+      "run": "npm run start",
+      "subproject": null,
+      "services": [
+        "mongodb"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true,
+      "built": true,
+      "launched": false,
+      "ttfr_s": 28.9,
+      "interventions_auto": 0,
+      "interventions_manual": 0,
+      "exit_code": 1,
+      "tail": "port: 27017\n    }\n  }\n}\nMongoDB connection error. Please make sure MongoDB is running.",
+      "note": "installé ; échec : exige MongoDB (mongod indisponible dans le sandbox)"
+    },
+    {
+      "repo": "https://github.com/gothinkster/django-realworld-example-app",
+      "clone_s": 0.3,
+      "lang": "python",
+      "version": null,
+      "run": "python manage.py runserver",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true,
+      "built": true,
+      "launched": true,
+      "ttfr_s": 8.9,
+      "interventions_auto": 2,
+      "interventions_manual": 0,
+      "exit_code": null,
+      "tail": "(models.Model):\nRuntimeError: __class__ not set defining 'AbstractBaseUser' as <class 'django.contrib.auth.base_user.AbstractBaseUser'>. Was __classcell__ propagated to type.__new__?\n\u001b[1;36m[zero]\u001b[0m 2 correctif(s) appliqué(s) — journal : ~/.zero/logs/gothinkster__django-realworld-example-app.jsonl",
+      "note": "lancé après 2 correctifs automatiques"
+    },
+    {
+      "repo": "https://github.com/realpython/flask-by-example",
+      "clone_s": 1.5,
+      "lang": "python",
+      "version": "3.8.1",
+      "run": "sh heroku.sh",
+      "subproject": null,
+      "services": [
+        "postgres",
+        "redis"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true,
+      "built": true,
+      "launched": true,
+      "ttfr_s": 1.7,
+      "interventions_auto": 0,
+      "interventions_manual": 0,
+      "exit_code": null,
+      "tail": "\u001b[1;36m[zero]\u001b[0m lancement : sh heroku.sh\n05:12:56 Worker rq:worker:fa086a7b96df4d0db76521c693447b19: started, version 1.2.2\n05:12:56 *** Listening on default...\n05:12:56 Cleaning registries for queue: default\n05:14:54 Warm shut down requested",
+      "note": "runtime.txt épingle Python 3.8.1 (introuvable pour uv) → repli sur 3.8 ; lancé avec Redis et Postgres locaux"
+    },
+    {
+      "repo": "https://github.com/wsvincent/djangox",
+      "clone_s": 0.3,
+      "lang": "python",
+      "version": ">=3.12",
+      "run": "python manage.py runserver",
+      "subproject": null,
+      "services": [
+        "postgres"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true,
+      "built": true,
+      "launched": true,
+      "ttfr_s": 8.8,
+      "interventions_auto": 0,
+      "interventions_manual": 0,
+      "exit_code": null,
+      "tail": "opment server at http://127.0.0.1:8000/\nQuit the server with CONTROL-C.\n\nWARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.\nFor more information on production servers see: https://docs.djangoproject.com/en/6.0/howto/deployment/",
+      "note": "lancé sans intervention"
+    },
+    {
+      "repo": "https://github.com/mdn/django-locallibrary-tutorial",
+      "clone_s": 0.3,
+      "lang": "python",
+      "version": "3.10.2",
+      "run": "python manage.py migrate && python manage.py collectstatic --no-input && gunicorn locallibrary.wsgi",
+      "subproject": null,
+      "services": [
+        "postgres"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true,
+      "built": true,
+      "launched": true,
+      "ttfr_s": 3.8,
+      "interventions_auto": 0,
+      "interventions_manual": 0,
+      "exit_code": null,
+      "tail": "0000] [752] [INFO] Using worker: sync\n[2026-10-06 05:06:35 +0000] [753] [INFO] Booting worker with pid: 753\n[2026-10-06 05:08:10 +0000] [753] [INFO] Worker exiting (pid: 753)\n[2026-10-06 05:08:10 +0000] [752] [INFO] Handling signal: term\n[2026-10-06 05:08:10 +0000] [752] [INFO] Shutting down: Master",
+      "note": "lancé sans intervention"
+    }
+  ]
+}

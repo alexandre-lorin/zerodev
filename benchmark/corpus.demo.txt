@@ -1,0 +1,4 @@
+# Démo §16 : trois dépôts très différents (Node, Python/Django, Python/Flask + Redis + PostgreSQL)
+https://github.com/heroku/node-js-getting-started
+https://github.com/heroku/python-getting-started
+https://github.com/miguelgrinberg/microblog

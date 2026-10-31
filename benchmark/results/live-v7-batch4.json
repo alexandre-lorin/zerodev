@@ -1,0 +1,248 @@
+{
+ "note": "lot 4, deux moitiés, avant correctifs psycopg2/run_tee pour flask-realworld et sample-django",
+ "first_half": {
+  "summary": {
+   "repos": 4,
+   "cloned": 4,
+   "status": {
+    "runnable": 3,
+    "no_run_command": 1
+   },
+   "detected": 3,
+   "detection_rate": 0.75,
+   "detection_rate_of_cloned": 0.75,
+   "by_language": {
+    "go": {
+     "repos": 1,
+     "runnable": 1
+    },
+    "python": {
+     "repos": 3,
+     "runnable": 2
+    }
+   },
+   "built": 0,
+   "launched": 0,
+   "http_ok": 0,
+   "build_rate": 0.0,
+   "launch_rate": 0.0,
+   "median_ttfr_s": null,
+   "interventions_auto": 0,
+   "interventions_manual": 0,
+   "zero_touch": 0
+  },
+  "results": [
+   {
+    "repo": "https://github.com/gothinkster/golang-gin-realworld-example-app",
+    "clone_s": 0.0,
+    "lang": "go",
+    "version": "1.21",
+    "run": "go run .",
+    "subproject": null,
+    "services": [],
+    "ai_libs": [],
+    "status": "runnable",
+    "detected": true,
+    "built": false,
+    "launched": false,
+    "ttfr_s": null,
+    "listening_ports": [],
+    "http": null,
+    "interventions_auto": 0,
+    "interventions_manual": 0,
+    "exit_code": 1,
+    "tail": "version   : 1.21  (go.mod go)\n  installer : go mod download\n  lancer    : go run .\n\n\u001b[1;31m[zero] erreur :\u001b[0m impossible d'obtenir Go : réseau bloqué (go.dev) et aucun Go sur le système"
+   },
+   {
+    "repo": "https://github.com/gothinkster/flask-realworld-example-app",
+    "clone_s": 0.0,
+    "lang": "python",
+    "version": null,
+    "run": "gunicorn autoapp:app -b 0.0.0.0:$PORT -w 3",
+    "subproject": null,
+    "services": [
+     "postgres"
+    ],
+    "ai_libs": [],
+    "status": "runnable",
+    "detected": true,
+    "built": false,
+    "launched": false,
+    "ttfr_s": null,
+    "listening_ports": [],
+    "http": null,
+    "interventions_auto": 0,
+    "interventions_manual": 0,
+    "exit_code": 1,
+    "tail": "t']' returned non-zero exit status 1.\n\n      hint: This usually indicates a problem with the package or the build\n      environment.\n\u001b[1;31m[zero] erreur :\u001b[0m commande échouée : uv pip install --python /root/.zero/envs/gothinkster__flask-realworld-example-app-e3e46c9a/bin/python -r requirements.txt"
+   },
+   {
+    "repo": "https://github.com/miguelgrinberg/flask-video-streaming",
+    "clone_s": 0.0,
+    "lang": "python",
+    "version": null,
+    "run": "python app.py",
+    "subproject": null,
+    "services": [],
+    "ai_libs": [],
+    "status": "runnable",
+    "detected": true,
+    "built": false,
+    "launched": false,
+    "ttfr_s": null,
+    "listening_ports": [],
+    "http": null,
+    "interventions_auto": 0,
+    "interventions_manual": 0,
+    "exit_code": 1,
+    "tail": " you require jinja2>=3.0.\n      And because you require jinja2==2.11.3, we can conclude that your\n      requirements are unsatisfiable.\n\u001b[1;31m[zero] erreur :\u001b[0m commande échouée : uv pip install --python /root/.zero/envs/miguelgrinberg__flask-video-streaming-5b3d2651/bin/python -r requirements.txt"
+   },
+   {
+    "repo": "https://github.com/docker/getting-started",
+    "clone_s": 0.0,
+    "lang": "python",
+    "version": null,
+    "run": null,
+    "subproject": null,
+    "services": [],
+    "ai_libs": [],
+    "status": "no_run_command",
+    "detected": false
+   }
+  ]
+ },
+ "second_half": {
+  "summary": {
+   "repos": 4,
+   "cloned": 4,
+   "status": {
+    "runnable": 4
+   },
+   "detected": 4,
+   "detection_rate": 1.0,
+   "detection_rate_of_cloned": 1.0,
+   "by_language": {
+    "node": {
+     "repos": 2,
+     "runnable": 2
+    },
+    "python": {
+     "repos": 2,
+     "runnable": 2
+    }
+   },
+   "built": 3,
+   "launched": 3,
+   "http_ok": 3,
+   "build_rate": 0.75,
+   "launch_rate": 0.75,
+   "median_ttfr_s": 0.4,
+   "interventions_auto": 1,
+   "interventions_manual": 0,
+   "zero_touch": 3
+  },
+  "results": [
+   {
+    "repo": "https://github.com/digitalocean/sample-nodejs",
+    "clone_s": 0.0,
+    "lang": "node",
+    "version": null,
+    "run": "yarn run start",
+    "subproject": null,
+    "services": [],
+    "ai_libs": [],
+    "status": "runnable",
+    "detected": true,
+    "built": true,
+    "launched": true,
+    "ttfr_s": 6.1,
+    "listening_ports": [
+     3000
+    ],
+    "http": {
+     "port": 3000,
+     "status": 200
+    },
+    "interventions_auto": 0,
+    "interventions_manual": 0,
+    "exit_code": null,
+    "tail": "38;5;231;48;5;231m�\u001b[38;5;51;48;5;255m�\u001b[38;5;168;48;5;241m�\u001b[38;5;1;48;5;16m \u001b[38;5;1;48;5;16m \u001b[38;5;1;48;5;16m \u001b[38;5;1;48;5;16m \u001b[38;5;1;48;5;16m \u001b[38;5;1;48;5;16m \u001b[38;5;1;48;5;16m \u001b[38;5;1;48;5;16m \u001b[38;5;1;48;5;16m \u001b[38;5;1;48;5;16m \u001b[38;5;1;48;5;16m \u001b[0m\n\u001b[0m\n\nServer listening on port 3000 🚀"
+   },
+   {
+    "repo": "https://github.com/render-examples/flask-hello-world",
+    "clone_s": 0.0,
+    "lang": "python",
+    "version": null,
+    "run": "flask --app app:app run",
+    "subproject": null,
+    "services": [],
+    "ai_libs": [],
+    "status": "runnable",
+    "detected": true,
+    "built": true,
+    "launched": true,
+    "ttfr_s": 0.1,
+    "listening_ports": [
+     5000
+    ],
+    "http": {
+     "port": 5000,
+     "status": 200
+    },
+    "interventions_auto": 0,
+    "interventions_manual": 0,
+    "exit_code": null,
+    "tail": "* Debug mode: off\n\u001b[31m\u001b[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.\u001b[0m\n * Running on http://127.0.0.1:5000\n\u001b[33mPress CTRL+C to quit\u001b[0m\n127.0.0.1 - - [06/Oct/2026 20:46:29] \"GET / HTTP/1.1\" 200 -"
+   },
+   {
+    "repo": "https://github.com/render-examples/express-hello-world",
+    "clone_s": 0.0,
+    "lang": "node",
+    "version": null,
+    "run": "yarn run start",
+    "subproject": null,
+    "services": [],
+    "ai_libs": [],
+    "status": "runnable",
+    "detected": true,
+    "built": true,
+    "launched": true,
+    "ttfr_s": 0.4,
+    "listening_ports": [
+     3001
+    ],
+    "http": {
+     "port": 3001,
+     "status": 200
+    },
+    "interventions_auto": 0,
+    "interventions_manual": 0,
+    "exit_code": null,
+    "tail": "Done in 0.11s.\n\u001b[1;36m[zero]\u001b[0m lancement : yarn run start\nyarn run v1.22.22\n$ node app.js\nExample app listening on port 3001!"
+   },
+   {
+    "repo": "https://github.com/digitalocean/sample-django",
+    "clone_s": 0.0,
+    "lang": "python",
+    "version": null,
+    "run": "python manage.py runserver",
+    "subproject": null,
+    "services": [
+     "postgres"
+    ],
+    "ai_libs": [],
+    "status": "runnable",
+    "detected": true,
+    "built": false,
+    "launched": false,
+    "ttfr_s": null,
+    "listening_ports": [],
+    "http": null,
+    "interventions_auto": 1,
+    "interventions_manual": 0,
+    "exit_code": 1,
+    "tail": "    hint: This usually indicates a problem with the package or the build\n      environment.\n\u001b[1;31m[zero] erreur :\u001b[0m commande échouée : uv pip install --python /root/.zero/envs/digitalocean__sample-django-b3a29b04/bin/python -r /root/.zero/envs/digitalocean__sample-django-b3a29b04.requirements.txt"
+   }
+  ]
+ }
+}

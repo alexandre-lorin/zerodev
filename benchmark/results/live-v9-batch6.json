@@ -1,0 +1,151 @@
+{
+ "note": "lot 6 (Pipenv/poetry) ; httpbin rejoué après correctifs",
+ "batch": {
+  "summary": {
+   "repos": 4,
+   "cloned": 4,
+   "status": {
+    "runnable": 2,
+    "no_run_command": 2
+   },
+   "detected": 2,
+   "detection_rate": 0.5,
+   "detection_rate_of_cloned": 0.5,
+   "by_language": {
+    "python": {
+     "repos": 4,
+     "runnable": 2
+    }
+   },
+   "built": 1,
+   "launched": 0,
+   "http_ok": 0,
+   "build_rate": 0.25,
+   "launch_rate": 0.0,
+   "median_ttfr_s": 4.0,
+   "interventions_auto": 1,
+   "interventions_manual": 0,
+   "zero_touch": 0
+  },
+  "results": [
+   {
+    "repo": "https://github.com/postmanlabs/httpbin",
+    "clone_s": 0.6,
+    "lang": "python",
+    "version": "3.6.5",
+    "run": "gunicorn httpbin:app -k gevent",
+    "subproject": null,
+    "services": [],
+    "ai_libs": [],
+    "status": "runnable",
+    "detected": true,
+    "built": false,
+    "launched": false,
+    "ttfr_s": null,
+    "listening_ports": [],
+    "http": null,
+    "interventions_auto": 1,
+    "interventions_manual": 0,
+    "exit_code": 1,
+    "tail": " embeds available Python downloads and may require an update to install new versions. Consider retrying on a newer version of uv.\n\u001b[1;31m[zero] erreur :\u001b[0m commande échouée : [ -d /root/.zero/envs/postmanlabs__httpbin-057c173c ] || uv venv --python 3.6 /root/.zero/envs/postmanlabs__httpbin-057c173c"
+   },
+   {
+    "repo": "https://github.com/nsidnev/fastapi-realworld-example-app",
+    "clone_s": 0.6,
+    "lang": "python",
+    "version": null,
+    "run": null,
+    "subproject": null,
+    "services": [
+     "postgres"
+    ],
+    "ai_libs": [],
+    "status": "no_run_command",
+    "detected": false
+   },
+   {
+    "repo": "https://github.com/kennethreitz/responder",
+    "clone_s": 0.9,
+    "lang": "python",
+    "version": ">=3.11",
+    "run": "responder",
+    "subproject": null,
+    "services": [],
+    "ai_libs": [],
+    "status": "runnable",
+    "detected": true,
+    "built": true,
+    "launched": false,
+    "ttfr_s": 4.0,
+    "listening_ports": [],
+    "http": null,
+    "interventions_auto": 0,
+    "interventions_manual": 0,
+    "exit_code": 1,
+    "tail": "Usage:\n  responder run [--debug] [--reload] [--host=<addr>] [--port=<n>] [--server=<name>] [--limit-max-requests=] <target>\n  responder build [<target>]\n  responder client [--lang=<lang>] [--class-name=<name>] [--output=<path>] <target>\n  responder --version"
+   },
+   {
+    "repo": "https://github.com/miguelgrinberg/python-socketio",
+    "clone_s": 0.6,
+    "lang": "python",
+    "version": ">=3.8",
+    "run": null,
+    "subproject": null,
+    "services": [],
+    "ai_libs": [],
+    "status": "no_run_command",
+    "detected": false
+   }
+  ]
+ },
+ "httpbin_after_fixes": {
+  "summary": {
+   "repos": 1,
+   "cloned": 1,
+   "status": {
+    "runnable": 1
+   },
+   "detected": 1,
+   "detection_rate": 1.0,
+   "detection_rate_of_cloned": 1.0,
+   "by_language": {
+    "python": {
+     "repos": 1,
+     "runnable": 1
+    }
+   },
+   "built": 1,
+   "launched": 0,
+   "http_ok": 0,
+   "build_rate": 1.0,
+   "launch_rate": 0.0,
+   "median_ttfr_s": 7.3,
+   "interventions_auto": 2,
+   "interventions_manual": 0,
+   "zero_touch": 0
+  },
+  "results": [
+   {
+    "repo": "https://github.com/postmanlabs/httpbin",
+    "clone_s": 0.0,
+    "lang": "python",
+    "version": "3.6.5",
+    "run": "gunicorn httpbin:app -k gevent",
+    "subproject": null,
+    "services": [],
+    "ai_libs": [],
+    "status": "runnable",
+    "detected": true,
+    "built": true,
+    "launched": false,
+    "ttfr_s": 7.3,
+    "listening_ports": [],
+    "http": null,
+    "interventions_auto": 2,
+    "interventions_manual": 0,
+    "exit_code": 3,
+    "tail": " 05:28:31 +0000] [834] [ERROR] Worker (pid:836) exited with code 3\n[2026-10-07 05:28:31 +0000] [834] [ERROR] Shutting down: Master\n[2026-10-07 05:28:31 +0000] [834] [ERROR] Reason: Worker failed to boot.\n\u001b[1;36m[zero]\u001b[0m 1 correctif(s) appliqué(s) — journal : ~/.zero/logs/postmanlabs__httpbin.jsonl"
+   }
+  ]
+ }
+}

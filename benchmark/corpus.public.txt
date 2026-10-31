@@ -1,0 +1,117 @@
+# Corpus ZeroDev v2 — dépôts publics réels, sélectionnés À LA MAIN (l'API de recherche GitHub n'était pas
+# utilisable sans token LORS DE LA CONSTITUTION DE CE CORPUS ; elle l'est devenue ensuite, à 10 recherches/minute : pour un corpus plus large par règle
+# fixe voir benchmark/build_corpus_rule.py, et benchmark/README.md pour la lecture des corpus).
+# Un nom qui n'existe plus apparaît comme `clone_failed` dans le rapport : c'est une donnée, pas une erreur.
+# Format : une URL git ou un dossier local par ligne ; `#` commence un commentaire.
+
+# ── Python — applications ──
+https://github.com/miguelgrinberg/microblog
+https://github.com/miguelgrinberg/flasky
+https://github.com/tiangolo/full-stack-fastapi-template
+https://github.com/mealie-recipes/mealie
+https://github.com/getredash/redash
+https://github.com/ytdl-org/youtube-dl
+https://github.com/nvbn/thefuck
+https://github.com/comfyanonymous/ComfyUI
+https://github.com/AUTOMATIC1111/stable-diffusion-webui
+https://github.com/oobabooga/text-generation-webui
+https://github.com/streamlit/streamlit-example
+https://github.com/django/djangoproject.com
+https://github.com/wagtail/bakerydemo
+https://github.com/zylon-ai/private-gpt
+https://github.com/httpie/cli
+https://github.com/yt-dlp/yt-dlp
+
+# ── Python — bibliothèques (aucune commande principale attendue) ──
+https://github.com/psf/requests
+https://github.com/pallets/flask
+https://github.com/pallets/click
+https://github.com/encode/httpx
+https://github.com/Textualize/rich
+https://github.com/encode/uvicorn
+
+# ── Node — applications ──
+https://github.com/gothinkster/node-express-realworld-example-app
+https://github.com/gothinkster/react-redux-realworld-example-app
+https://github.com/sveltejs/realworld
+https://github.com/louislam/uptime-kuma
+https://github.com/excalidraw/excalidraw
+https://github.com/vercel/commerce
+https://github.com/vercel/next-learn
+https://github.com/shadcn-ui/taxonomy
+https://github.com/gatsbyjs/gatsby-starter-blog
+https://github.com/typicode/json-server
+https://github.com/nestjs/typescript-starter
+https://github.com/remix-run/indie-stack
+https://github.com/vuejs/create-vue
+https://github.com/node-red/node-red
+https://github.com/ether/etherpad-lite
+https://github.com/hexojs/hexo
+https://github.com/webtorrent/webtorrent
+
+# ── Node — monorepos ──
+https://github.com/TryGhost/Ghost
+https://github.com/directus/directus
+https://github.com/nocodb/nocodb
+https://github.com/facebook/create-react-app
+https://github.com/vitejs/vite
+https://github.com/discordjs/discord.js
+https://github.com/t3-oss/create-t3-app
+
+# ── Node — bibliothèques ──
+https://github.com/expressjs/express
+https://github.com/fastify/fastify
+https://github.com/koajs/koa
+https://github.com/reduxjs/redux
+
+# ── Rust ──
+https://github.com/BurntSushi/ripgrep
+https://github.com/sharkdp/bat
+https://github.com/sharkdp/fd
+https://github.com/sharkdp/hyperfine
+https://github.com/starship/starship
+https://github.com/alacritty/alacritty
+https://github.com/ajeetdsouza/zoxide
+https://github.com/casey/just
+https://github.com/eza-community/eza
+https://github.com/tokio-rs/axum
+https://github.com/SergioBenitez/Rocket
+https://github.com/actix/examples
+https://github.com/zellij-org/zellij
+https://github.com/rust-lang/mdBook
+https://github.com/rust-lang/rustlings
+https://github.com/dandavison/delta
+https://github.com/ClementTsang/bottom
+https://github.com/XAMPPRocky/tokei
+https://github.com/meilisearch/meilisearch
+https://github.com/nushell/nushell
+https://github.com/helix-editor/helix
+https://github.com/tokio-rs/mini-redis
+
+# ── Go ──
+https://github.com/gohugoio/hugo
+https://github.com/junegunn/fzf
+https://github.com/jesseduffield/lazygit
+https://github.com/caddyserver/caddy
+https://github.com/cli/cli
+https://github.com/gin-gonic/examples
+https://github.com/go-gitea/gitea
+https://github.com/gogs/gogs
+https://github.com/nektos/act
+https://github.com/derailed/k9s
+https://github.com/charmbracelet/glow
+https://github.com/wagoodman/dive
+https://github.com/syncthing/syncthing
+https://github.com/prometheus/node_exporter
+https://github.com/golang/example
+https://github.com/gofiber/recipes
+https://github.com/FiloSottile/mkcert
+https://github.com/pocketbase/pocketbase
+https://github.com/labstack/echo
+
+# ── Hors périmètre (Java, PHP, Ruby, C…) : attendus « unsupported » ──
+https://github.com/spring-projects/spring-petclinic
+https://github.com/laravel/laravel
+https://github.com/jekyll/jekyll
+https://github.com/redis/redis
+https://github.com/mastodon/mastodon

@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zerodev"
+dynamic = ["version"]
+description = "git clone && zero. — environnement de développement auto-reproductible"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+zero = "zerodev.cli:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "zerodev.util.VERSION"}      # une seule source de vérité
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,1288 @@
+{
+  "summary": {
+    "repos": 96,
+    "cloned": 96,
+    "status": {
+      "runnable": 68,
+      "unsupported": 6,
+      "no_run_command": 14,
+      "ambiguous_monorepo": 4,
+      "ambiguous_entrypoint": 4
+    },
+    "detected": 68,
+    "detection_rate": 0.708,
+    "detection_rate_of_cloned": 0.708,
+    "by_language": {
+      "python": {
+        "repos": 19,
+        "runnable": 16
+      },
+      "node": {
+        "repos": 26,
+        "runnable": 21
+      },
+      "inconnu": {
+        "repos": 10,
+        "runnable": 0
+      },
+      "rust": {
+        "repos": 22,
+        "runnable": 17
+      },
+      "go": {
+        "repos": 19,
+        "runnable": 14
+      }
+    }
+  },
+  "results": [
+    {
+      "repo": "https://github.com/miguelgrinberg/microblog",
+      "clone_s": 2.7,
+      "lang": "python",
+      "version": null,
+      "run": "flask db upgrade; flask translate compile; gunicorn microblog:app",
+      "subproject": null,
+      "services": [
+        "postgres",
+        "redis"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/miguelgrinberg/flasky",
+      "clone_s": 1.7,
+      "lang": "python",
+      "version": null,
+      "run": "gunicorn flasky:app",
+      "subproject": null,
+      "services": [
+        "postgres",
+        "mysql"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/tiangolo/full-stack-fastapi-template",
+      "clone_s": 2.1,
+      "lang": "node",
+      "version": null,
+      "run": "bun run dev",
+      "subproject": null,
+      "services": [
+        "postgres"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/mealie-recipes/mealie",
+      "clone_s": 4.6,
+      "lang": "python",
+      "version": ">=3.14,<3.15",
+      "run": "mealie",
+      "subproject": null,
+      "services": [
+        "postgres"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/getredash/redash",
+      "clone_s": 4.4,
+      "lang": "node",
+      "version": "v24",
+      "run": "pnpm run start",
+      "subproject": null,
+      "services": [
+        "postgres",
+        "mysql",
+        "redis",
+        "mongodb"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/ytdl-org/youtube-dl",
+      "clone_s": 3.0,
+      "lang": "python",
+      "version": null,
+      "run": "youtube-dl",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/nvbn/thefuck",
+      "clone_s": 2.2,
+      "lang": "python",
+      "version": null,
+      "run": "thefuck",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/comfyanonymous/ComfyUI",
+      "clone_s": 6.8,
+      "lang": "python",
+      "version": ">=3.10",
+      "run": "python main.py",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [
+        "torch",
+        "torchvision",
+        "transformers"
+      ],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+      "clone_s": 1.1,
+      "lang": "python",
+      "version": null,
+      "run": "python launch.py",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [
+        "torch",
+        "transformers",
+        "accelerate"
+      ],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/oobabooga/text-generation-webui",
+      "clone_s": 4.2,
+      "status": "unsupported",
+      "error": "scripts Python à la racine mais aucun manifeste reconnu (requirements dans un sous-dossier ?) — utilisez --cmd, ou --project si un sous-dossier est le projet",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/streamlit/streamlit-example",
+      "clone_s": 0.9,
+      "lang": "python",
+      "version": null,
+      "run": "streamlit run streamlit_app.py",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/django/djangoproject.com",
+      "clone_s": 2.0,
+      "lang": "python",
+      "version": "==3.12.*",
+      "run": "make run",
+      "subproject": null,
+      "services": [
+        "postgres",
+        "redis"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/wagtail/bakerydemo",
+      "clone_s": 2.0,
+      "lang": "python",
+      "version": "3.12",
+      "run": "uwsgi ./etc/uwsgi.ini",
+      "subproject": null,
+      "services": [
+        "postgres",
+        "redis"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/zylon-ai/private-gpt",
+      "clone_s": 5.0,
+      "lang": "python",
+      "version": ">=3.11,<3.12",
+      "run": "private-gpt",
+      "subproject": null,
+      "services": [
+        "postgres",
+        "mysql",
+        "redis",
+        "rabbitmq"
+      ],
+      "ai_libs": [
+        "torch",
+        "torchvision",
+        "torchaudio",
+        "transformers"
+      ],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/httpie/cli",
+      "clone_s": 0.9,
+      "lang": "python",
+      "version": null,
+      "run": "http",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/yt-dlp/yt-dlp",
+      "clone_s": 2.0,
+      "lang": "python",
+      "version": ">=3.10",
+      "run": "yt-dlp",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/psf/requests",
+      "clone_s": 1.0,
+      "lang": "python",
+      "version": ">=3.10",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "no_run_command",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/pallets/flask",
+      "clone_s": 0.9,
+      "lang": "python",
+      "version": ">=3.10",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "no_run_command",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/pallets/click",
+      "clone_s": 0.9,
+      "lang": "python",
+      "version": ">=3.10",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "no_run_command",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/encode/httpx",
+      "clone_s": 1.1,
+      "lang": "python",
+      "version": ">=3.9",
+      "run": "httpx",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/Textualize/rich",
+      "clone_s": 2.7,
+      "lang": "python",
+      "version": null,
+      "run": "python -m rich",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/encode/uvicorn",
+      "clone_s": 0.9,
+      "lang": "python",
+      "version": ">=3.11",
+      "run": "python -m uvicorn",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/gothinkster/node-express-realworld-example-app",
+      "clone_s": 0.7,
+      "lang": "node",
+      "version": null,
+      "run": "npm run start",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/gothinkster/react-redux-realworld-example-app",
+      "clone_s": 0.6,
+      "lang": "node",
+      "version": null,
+      "run": "npm run start",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/sveltejs/realworld",
+      "clone_s": 0.6,
+      "lang": "node",
+      "version": "20",
+      "run": "pnpm run dev",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/louislam/uptime-kuma",
+      "clone_s": 2.1,
+      "lang": "node",
+      "version": ">= 26.2.0",
+      "run": "npm run dev",
+      "subproject": null,
+      "services": [
+        "postgres",
+        "mysql",
+        "redis",
+        "mongodb"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/excalidraw/excalidraw",
+      "clone_s": 6.8,
+      "lang": "node",
+      "version": ">=18.0.0",
+      "run": "yarn run start",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/vercel/commerce",
+      "clone_s": 1.1,
+      "lang": "node",
+      "version": null,
+      "run": "pnpm run dev",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/vercel/next-learn",
+      "clone_s": 1.3,
+      "lang": "node",
+      "version": ">=18.17.0",
+      "run": "pnpm run start",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/shadcn-ui/taxonomy",
+      "clone_s": 0.7,
+      "lang": "node",
+      "version": "v16.18.0",
+      "run": "pnpm run dev",
+      "subproject": null,
+      "services": [
+        "mysql"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/gatsbyjs/gatsby-starter-blog",
+      "clone_s": 0.6,
+      "lang": "node",
+      "version": null,
+      "run": "npm run start",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/typicode/json-server",
+      "clone_s": 0.7,
+      "lang": "node",
+      "version": ">=22.12.0",
+      "run": "pnpm run dev",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/nestjs/typescript-starter",
+      "clone_s": 0.7,
+      "lang": "node",
+      "version": null,
+      "run": "npm run start",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/remix-run/indie-stack",
+      "clone_s": 0.7,
+      "lang": "node",
+      "version": ">=18.0.0",
+      "run": "npm run dev",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/vuejs/create-vue",
+      "clone_s": 0.7,
+      "lang": "node",
+      "version": "^22.18.0 || >=24.12.0",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "no_run_command",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/node-red/node-red",
+      "clone_s": 4.8,
+      "lang": "node",
+      "version": ">=22.9",
+      "run": "npm run dev",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/ether/etherpad-lite",
+      "clone_s": 2.3,
+      "lang": "node",
+      "version": ">=24.0.0",
+      "run": "pnpm run dev",
+      "subproject": null,
+      "services": [
+        "postgres"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/hexojs/hexo",
+      "clone_s": 0.7,
+      "lang": "node",
+      "version": ">=20.19.0",
+      "run": "node ./bin/hexo",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/webtorrent/webtorrent",
+      "clone_s": 1.4,
+      "lang": "node",
+      "version": ">=22",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "no_run_command",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/TryGhost/Ghost",
+      "clone_s": 13.7,
+      "lang": "node",
+      "version": "22.23.3",
+      "run": "pnpm run dev",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/directus/directus",
+      "clone_s": 4.4,
+      "status": "ambiguous_monorepo",
+      "candidates": [
+        "api",
+        "app",
+        "directus",
+        "packages/ai",
+        "packages/cli",
+        "packages/composables",
+        "packages/constants",
+        "packages/create-directus-extension",
+        "packages/create-directus-project",
+        "packages/errors",
+        "packages/extensions",
+        "packages/extensions-registry",
+        "packages/extensions-sdk",
+        "packages/memory",
+        "packages/pressure",
+        "packages/release-notes-generator",
+        "packages/schema",
+        "packages/schema-builder",
+        "packages/specs",
+        "packages/storage",
+        "packages/storage-driver-azure",
+        "packages/storage-driver-cloudinary",
+        "packages/storage-driver-gcs",
+        "packages/storage-driver-local",
+        "packages/storage-driver-s3",
+        "packages/storage-driver-supabase",
+        "packages/stores",
+        "packages/system-data",
+        "packages/themes",
+        "packages/types",
+        "packages/utils",
+        "packages/validation",
+        "packages/visual-editing",
+        "sdk"
+      ],
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/nocodb/nocodb",
+      "clone_s": 17.6,
+      "status": "ambiguous_monorepo",
+      "candidates": [
+        "packages/nc-gui",
+        "packages/nc-secret-mgr",
+        "packages/nocodb",
+        "packages/nocodb-sdk-v2"
+      ],
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/facebook/create-react-app",
+      "clone_s": 1.2,
+      "lang": "node",
+      "version": null,
+      "run": "npm run start",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/vitejs/vite",
+      "clone_s": 2.8,
+      "lang": "node",
+      "version": "^20.19.0 || >=22.12.0",
+      "run": "pnpm run dev",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/discordjs/discord.js",
+      "clone_s": 3.0,
+      "status": "ambiguous_monorepo",
+      "candidates": [
+        "apps/guide",
+        "apps/website",
+        "packages/api-extractor",
+        "packages/docgen",
+        "packages/scripts"
+      ],
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/t3-oss/create-t3-app",
+      "clone_s": 1.2,
+      "status": "ambiguous_monorepo",
+      "candidates": [
+        "cli",
+        "www"
+      ],
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/expressjs/express",
+      "clone_s": 0.9,
+      "lang": "node",
+      "version": ">= 18",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "no_run_command",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/fastify/fastify",
+      "clone_s": 1.1,
+      "lang": "node",
+      "version": null,
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "no_run_command",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/koajs/koa",
+      "clone_s": 1.0,
+      "lang": "node",
+      "version": ">= 18",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "no_run_command",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/reduxjs/redux",
+      "clone_s": 3.6,
+      "lang": "node",
+      "version": null,
+      "run": "pnpm run dev",
+      "subproject": "website",
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/BurntSushi/ripgrep",
+      "clone_s": 2.0,
+      "lang": "rust",
+      "version": "stable",
+      "run": "cargo run --release",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/sharkdp/bat",
+      "clone_s": 1.5,
+      "lang": "rust",
+      "version": "stable",
+      "run": "cargo run --release",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/sharkdp/fd",
+      "clone_s": 1.0,
+      "lang": "rust",
+      "version": "stable",
+      "run": "cargo run --release",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/sharkdp/hyperfine",
+      "clone_s": 0.7,
+      "lang": "rust",
+      "version": "stable",
+      "run": "cargo run --release",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/starship/starship",
+      "clone_s": 3.0,
+      "lang": "rust",
+      "version": "stable",
+      "run": "cargo run --release",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/alacritty/alacritty",
+      "clone_s": 2.9,
+      "lang": "rust",
+      "version": "stable",
+      "run": "cargo run --release -p alacritty",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/ajeetdsouza/zoxide",
+      "clone_s": 0.9,
+      "lang": "rust",
+      "version": "stable",
+      "run": "cargo run --release",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/casey/just",
+      "clone_s": 1.0,
+      "lang": "rust",
+      "version": "stable",
+      "run": "cargo run --release",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/eza-community/eza",
+      "clone_s": 1.2,
+      "lang": "rust",
+      "version": "1.90",
+      "run": "cargo run --release",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/tokio-rs/axum",
+      "clone_s": 2.1,
+      "lang": "rust",
+      "version": "stable",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "no_run_command",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/SergioBenitez/Rocket",
+      "clone_s": 1.1,
+      "lang": "rust",
+      "version": "stable",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "no_run_command",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/actix/examples",
+      "clone_s": 1.1,
+      "lang": "rust",
+      "version": "stable",
+      "run": null,
+      "subproject": null,
+      "services": [
+        "postgres",
+        "mysql",
+        "redis",
+        "mongodb"
+      ],
+      "ai_libs": [],
+      "status": "ambiguous_entrypoint",
+      "choices": [
+        "cargo run --release -p actix-casbin-example",
+        "cargo run --release -p cookie-auth",
+        "cargo run --release -p cookie-session",
+        "cargo run --release -p redis-session-example",
+        "cargo run --release -p simple-auth-server",
+        "cargo run --release -p background-jobs",
+        "cargo run --release -p example-basics",
+        "cargo run --release -p error-handling"
+      ],
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/zellij-org/zellij",
+      "clone_s": 6.2,
+      "lang": "rust",
+      "version": "1.95.0",
+      "run": "cargo run --release",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/rust-lang/mdBook",
+      "clone_s": 1.0,
+      "lang": "rust",
+      "version": "stable",
+      "run": "cargo run --release",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/rust-lang/rustlings",
+      "clone_s": 0.7,
+      "lang": "rust",
+      "version": "stable",
+      "run": "cargo run --release",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/dandavison/delta",
+      "clone_s": 1.1,
+      "lang": "rust",
+      "version": "stable",
+      "run": "cargo run --release",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/ClementTsang/bottom",
+      "clone_s": 1.5,
+      "lang": "rust",
+      "version": "stable",
+      "run": "cargo run --release",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/XAMPPRocky/tokei",
+      "clone_s": 0.7,
+      "lang": "rust",
+      "version": "stable",
+      "run": "cargo run --release",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/meilisearch/meilisearch",
+      "clone_s": 5.0,
+      "lang": "rust",
+      "version": "1.98.1",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "ambiguous_entrypoint",
+      "choices": [
+        "cargo run --release -p meilisearch",
+        "cargo run --release -p meilitool",
+        "cargo run --release -p filter-parser",
+        "cargo run --release -p flatten-serde-json",
+        "cargo run --release -p fuzzers",
+        "cargo run --release -p tracing-trace",
+        "cargo run --release -p xtask",
+        "cargo run --release -p build-info"
+      ],
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/nushell/nushell",
+      "clone_s": 3.6,
+      "lang": "rust",
+      "version": "1.97.1",
+      "run": "cargo run --release",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/helix-editor/helix",
+      "clone_s": 2.4,
+      "lang": "rust",
+      "version": "1.90.0",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "ambiguous_entrypoint",
+      "choices": [
+        "cargo run --release -p helix-term",
+        "cargo run --release -p helix-loader",
+        "cargo run --release -p xtask"
+      ],
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/tokio-rs/mini-redis",
+      "clone_s": 1.0,
+      "lang": "rust",
+      "version": "stable",
+      "run": "cargo run --release --bin mini-redis-server",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/gohugoio/hugo",
+      "clone_s": 4.5,
+      "lang": "go",
+      "version": "1.27.0",
+      "run": "go run .",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/junegunn/fzf",
+      "clone_s": 1.0,
+      "lang": "go",
+      "version": "1.23.0",
+      "run": "go run .",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/jesseduffield/lazygit",
+      "clone_s": 3.8,
+      "lang": "go",
+      "version": "1.25.0",
+      "run": "go run .",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/caddyserver/caddy",
+      "clone_s": 1.5,
+      "lang": "go",
+      "version": "1.26.0",
+      "run": "go run ./cmd/caddy",
+      "subproject": null,
+      "services": [
+        "postgres",
+        "mysql"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/cli/cli",
+      "clone_s": 4.1,
+      "lang": "go",
+      "version": "1.27.1",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "ambiguous_entrypoint",
+      "choices": [
+        "go run ./cmd/gen-docs",
+        "go run ./cmd/gh"
+      ],
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/gin-gonic/examples",
+      "clone_s": 0.9,
+      "lang": "go",
+      "version": "1.26.0",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "no_run_command",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/go-gitea/gitea",
+      "clone_s": 6.2,
+      "lang": "go",
+      "version": "1.27.1",
+      "run": "go run .",
+      "subproject": null,
+      "services": [
+        "postgres",
+        "mysql",
+        "redis"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/gogs/gogs",
+      "clone_s": 5.4,
+      "lang": "go",
+      "version": "1.27.0",
+      "run": "go run .",
+      "subproject": null,
+      "services": [
+        "postgres",
+        "mysql",
+        "redis"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/nektos/act",
+      "clone_s": 6.1,
+      "lang": "go",
+      "version": "1.25.0",
+      "run": "go run .",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/derailed/k9s",
+      "clone_s": 2.3,
+      "lang": "go",
+      "version": "1.26.8",
+      "run": "go run .",
+      "subproject": null,
+      "services": [
+        "postgres"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/charmbracelet/glow",
+      "clone_s": 0.7,
+      "lang": "go",
+      "version": "1.26.7",
+      "run": "go run .",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/wagoodman/dive",
+      "clone_s": 2.2,
+      "lang": "go",
+      "version": "1.24",
+      "run": "go run ./cmd/dive",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/syncthing/syncthing",
+      "clone_s": 2.5,
+      "lang": "go",
+      "version": "1.26.2",
+      "run": "go run ./cmd/syncthing",
+      "subproject": null,
+      "services": [
+        "rabbitmq"
+      ],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/prometheus/node_exporter",
+      "clone_s": 1.0,
+      "lang": "go",
+      "version": "1.25.0",
+      "run": "go run .",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/golang/example",
+      "clone_s": 1.1,
+      "lang": "go",
+      "version": "1.23.0",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "no_run_command",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/gofiber/recipes",
+      "clone_s": 1.4,
+      "lang": "go",
+      "version": "1.25.0",
+      "run": "go run .",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/FiloSottile/mkcert",
+      "clone_s": 0.6,
+      "lang": "go",
+      "version": "1.18",
+      "run": "go run .",
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "runnable",
+      "detected": true
+    },
+    {
+      "repo": "https://github.com/pocketbase/pocketbase",
+      "clone_s": 2.1,
+      "lang": "go",
+      "version": "1.27",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "no_run_command",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/labstack/echo",
+      "clone_s": 0.9,
+      "lang": "go",
+      "version": "1.25.0",
+      "run": null,
+      "subproject": null,
+      "services": [],
+      "ai_libs": [],
+      "status": "no_run_command",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/spring-projects/spring-petclinic",
+      "clone_s": 0.9,
+      "status": "unsupported",
+      "error": "aucun projet Node, Python, Rust ou Go détecté",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/laravel/laravel",
+      "clone_s": 0.7,
+      "status": "unsupported",
+      "error": "écosystème non supporté : PHP (composer.json) (le package.json n'est que l'outillage front)",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/jekyll/jekyll",
+      "clone_s": 1.1,
+      "status": "unsupported",
+      "error": "aucun projet Node, Python, Rust ou Go détecté",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/redis/redis",
+      "clone_s": 1.8,
+      "status": "unsupported",
+      "error": "aucun projet Node, Python, Rust ou Go détecté",
+      "detected": false
+    },
+    {
+      "repo": "https://github.com/mastodon/mastodon",
+      "clone_s": 3.9,
+      "status": "unsupported",
+      "error": "écosystème non supporté : Ruby (Gemfile) (le package.json n'est que l'outillage front)",
+      "detected": false
+    }
+  ]
+}

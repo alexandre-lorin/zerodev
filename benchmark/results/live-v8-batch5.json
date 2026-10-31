@@ -1,0 +1,217 @@
+{
+ "note": "lot 5, deux moitiés, avant correctifs gunicorn manquant et -e . optionnel",
+ "first_half": {
+  "summary": {
+   "repos": 4,
+   "cloned": 4,
+   "status": {
+    "no_run_command": 1,
+    "runnable": 3
+   },
+   "detected": 3,
+   "detection_rate": 0.75,
+   "detection_rate_of_cloned": 0.75,
+   "by_language": {
+    "python": {
+     "repos": 3,
+     "runnable": 2
+    },
+    "node": {
+     "repos": 1,
+     "runnable": 1
+    }
+   },
+   "built": 3,
+   "launched": 2,
+   "http_ok": 2,
+   "build_rate": 0.75,
+   "launch_rate": 0.5,
+   "median_ttfr_s": 6.9,
+   "interventions_auto": 0,
+   "interventions_manual": 0,
+   "zero_touch": 2
+  },
+  "results": [
+   {
+    "repo": "https://github.com/miguelgrinberg/Flask-SocketIO-Chat",
+    "clone_s": 0.6,
+    "lang": "python",
+    "version": null,
+    "run": null,
+    "subproject": null,
+    "services": [],
+    "ai_libs": [],
+    "status": "no_run_command",
+    "detected": false
+   },
+   {
+    "repo": "https://github.com/realpython/flask-boilerplate",
+    "clone_s": 0.8,
+    "lang": "python",
+    "version": null,
+    "run": "gunicorn app:app --log-file=-",
+    "subproject": null,
+    "services": [],
+    "ai_libs": [],
+    "status": "runnable",
+    "detected": true,
+    "built": true,
+    "launched": false,
+    "ttfr_s": 6.9,
+    "listening_ports": [],
+    "http": null,
+    "interventions_auto": 0,
+    "interventions_manual": 0,
+    "exit_code": 127,
+    "tail": "+ werkzeug==3.1.9\n + wrapt==2.5.0\n + wtforms==3.2.2\n\u001b[1;36m[zero]\u001b[0m lancement : gunicorn app:app --log-file=-\n/bin/sh: 1: gunicorn: not found"
+   },
+   {
+    "repo": "https://github.com/digitalocean/sample-flask",
+    "clone_s": 0.6,
+    "lang": "python",
+    "version": null,
+    "run": "gunicorn --worker-tmp-dir /dev/shm --config gunicorn_config.py app:app",
+    "subproject": null,
+    "services": [],
+    "ai_libs": [],
+    "status": "runnable",
+    "detected": true,
+    "built": true,
+    "launched": true,
+    "ttfr_s": 0.6,
+    "listening_ports": [
+     8080
+    ],
+    "http": {
+     "port": 8080,
+     "status": 200
+    },
+    "interventions_auto": 0,
+    "interventions_manual": 0,
+    "exit_code": null,
+    "tail": "170] [INFO] Booting worker with pid: 170\n[2026-10-07 05:00:43 +0000] [168] [INFO] Handling signal: term\n[2026-10-07 05:00:43 +0000] [169] [INFO] Worker exiting (pid: 169)\n[2026-10-07 05:00:43 +0000] [170] [INFO] Worker exiting (pid: 170)\n[2026-10-07 05:00:43 +0000] [168] [INFO] Shutting down: Master"
+   },
+   {
+    "repo": "https://github.com/digitalocean/sample-expressjs",
+    "clone_s": 0.6,
+    "lang": "node",
+    "version": ">= 18",
+    "run": "npm run start",
+    "subproject": null,
+    "services": [],
+    "ai_libs": [],
+    "status": "runnable",
+    "detected": true,
+    "built": true,
+    "launched": true,
+    "ttfr_s": 10.6,
+    "listening_ports": [
+     3000
+    ],
+    "http": {
+     "port": 3000,
+     "status": 200
+    },
+    "interventions_auto": 0,
+    "interventions_manual": 0,
+    "exit_code": null,
+    "tail": "35;235m\u001b[38;2;0;0;0m▄\u001b[48;2;222;236;236m\u001b[38;2;0;0;0m▄\u001b[48;2;0;0;0m \u001b[48;2;0;0;0m \u001b[48;2;0;0;0m \u001b[48;2;0;0;0m \u001b[48;2;0;0;0m \u001b[48;2;0;0;0m \u001b[48;2;0;0;0m \u001b[48;2;0;0;0m \u001b[48;2;0;0;0m \u001b[48;2;0;0;0m \u001b[48;2;0;0;0m \u001b[48;2;0;0;0m \u001b[48;2;0;0;0m \u001b[48;2;0;0;0m \u001b[0m\n\nsample-expressjs app listening on port 3000!"
+   }
+  ]
+ },
+ "second_half": {
+  "summary": {
+   "repos": 4,
+   "cloned": 2,
+   "status": {
+    "clone_failed": 2,
+    "runnable": 2
+   },
+   "detected": 2,
+   "detection_rate": 0.5,
+   "detection_rate_of_cloned": 1.0,
+   "by_language": {
+    "node": {
+     "repos": 1,
+     "runnable": 1
+    },
+    "python": {
+     "repos": 1,
+     "runnable": 1
+    }
+   },
+   "built": 1,
+   "launched": 1,
+   "http_ok": 1,
+   "build_rate": 0.25,
+   "launch_rate": 0.25,
+   "median_ttfr_s": 43.5,
+   "interventions_auto": 0,
+   "interventions_manual": 0,
+   "zero_touch": 1
+  },
+  "results": [
+   {
+    "repo": "https://github.com/render-examples/fastapi-hello-world",
+    "clone_s": 0.4,
+    "status": "clone_failed",
+    "error": "clone : fatal: could not read Username for 'https://github.com': terminal prompts disabled",
+    "detected": false
+   },
+   {
+    "repo": "https://github.com/render-examples/django-hello-world",
+    "clone_s": 0.4,
+    "status": "clone_failed",
+    "error": "clone : fatal: could not read Username for 'https://github.com': terminal prompts disabled",
+    "detected": false
+   },
+   {
+    "repo": "https://github.com/render-examples/nextjs-hello-world",
+    "clone_s": 0.6,
+    "lang": "node",
+    "version": "24.21.0",
+    "run": "yarn run dev",
+    "subproject": null,
+    "services": [],
+    "ai_libs": [],
+    "status": "runnable",
+    "detected": true,
+    "built": true,
+    "launched": true,
+    "ttfr_s": 43.5,
+    "listening_ports": [
+     3000
+    ],
+    "http": {
+     "port": 3000,
+     "status": 200
+    },
+    "interventions_auto": 0,
+    "interventions_manual": 0,
+    "exit_code": null,
+    "tail": "https://nextjs.org/telemetry\n\n\n GET / 200 in 2.6s (next.js: 2.6s, application-code: 54ms)\n\u001b[?25h"
+   },
+   {
+    "repo": "https://github.com/miguelgrinberg/microblog-api",
+    "clone_s": 1.0,
+    "lang": "python",
+    "version": null,
+    "run": "gunicorn --access-logfile - --error-logfile - microblog:app",
+    "subproject": null,
+    "services": [],
+    "ai_libs": [],
+    "status": "runnable",
+    "detected": true,
+    "built": false,
+    "launched": false,
+    "ttfr_s": null,
+    "listening_ports": [],
+    "http": null,
+    "interventions_auto": 0,
+    "interventions_manual": 0,
+    "exit_code": 1,
+    "tail": "packages = [\"src/foo\"]\n\n      hint: This usually indicates a problem with the package or the build\n      environment.\n\u001b[1;31m[zero] erreur :\u001b[0m commande échouée : uv pip install --python /root/.zero/envs/miguelgrinberg__microblog-api-0756ba6b/bin/python -e ."
+   }
+  ]
+ }
+}

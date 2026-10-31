@@ -1,0 +1,1 @@
+# aucune dépendance : bibliothèque standard uniquement

@@ -1,0 +1,13 @@
+# Corpus ZeroDev — une entrée par ligne : URL git ou dossier local. Les commentaires commencent par #.
+# Les chemins relatifs sont résolus depuis le dossier courant : lancez `zero bench` à la racine du projet.
+#
+# ── Dépôts d'exemple inclus (vérifiés par les tests) ──
+examples/node-app
+examples/python-app        # dépendance oubliée → doit déclencher la récupération V4
+examples/fullstack-app     # Procfile + services (postgres, redis) + .env
+examples/rust-app          # nécessite d'accéder à static.rust-lang.org (rustup)
+examples/multistack-app    # backend Python + frontend Node : `ambiguous_monorepo` sans --all
+#
+# ── Dépôts publics : à ajouter ici (objectif : 100, puis 500, puis 1000) ──
+# https://github.com/<org>/<repo>
+# https://github.com/<org>/<ancien-repo>   # inclure des projets anciens (Node 12, Python 3.7…)

@@ -1,0 +1,30 @@
+__pycache__/
+*.pyc
+*.egg-info/
+zero-bench/
+zero-bench.json
+*.zeroshare.tgz
+.env
+
+# artefacts de construction
+dist/
+*.pyz
+build/
+
+# Local-only data excluded from this source publication
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.keystore
+*.jks
+*.sqlite*
+*.db
+__pycache__/
+.venv*/
+node_modules/
+**/target/
+.runtime/
+output/
+models/
